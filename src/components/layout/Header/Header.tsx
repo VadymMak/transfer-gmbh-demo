@@ -6,7 +6,15 @@ import { useLocale, useTranslations } from 'next-intl';
 import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher/LanguageSwitcher';
 
-export default function Header({ logoUrl, whatsappBookingLink = '#' }: { logoUrl?: string; whatsappBookingLink?: string }) {
+export default function Header({
+  logoUrl,
+  whatsappBookingLink = '#',
+  activeLocales,
+}: {
+  logoUrl?: string;
+  whatsappBookingLink?: string;
+  activeLocales?: string[];
+}) {
   const locale = useLocale();
   const tHeader = useTranslations('Header');
   const navLinks = [
@@ -68,7 +76,7 @@ export default function Header({ logoUrl, whatsappBookingLink = '#' }: { logoUrl
               {link.label}
             </a>
           ))}
-          <LanguageSwitcher variant="dropdown" />
+          <LanguageSwitcher variant="dropdown" locales={activeLocales} />
           <a href={`/${locale}/#angebot`} className="header__btn-reserve">
             {tHeader('transferBuchen')}
           </a>
@@ -121,7 +129,7 @@ export default function Header({ logoUrl, whatsappBookingLink = '#' }: { logoUrl
               WhatsApp
             </a>
             <div className="header__mobile-lang">
-              <LanguageSwitcher variant="inline" />
+              <LanguageSwitcher variant="inline" locales={activeLocales} />
             </div>
           </nav>
         )}

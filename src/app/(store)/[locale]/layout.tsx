@@ -8,6 +8,7 @@ import Header from '@/components/layout/Header/Header';
 import Footer from '@/components/layout/Footer/Footer';
 import CookieBanner from '@/components/ui/CookieBanner/CookieBanner';
 import { getStoreConfig } from '@/lib/store-config';
+import { getActiveLocales } from '@/config';
 import { themeToCssVars, DEFAULT_THEME } from '@/lib/theme';
 import { db } from '@/lib/db';
 import { VerticalProvider } from '@/lib/vertical-context';
@@ -177,7 +178,7 @@ export default async function LocaleLayout({
           <CustomerProvider>
             <VerticalProvider config={config.vertical}>
               <PresenceProvider presence={config.presence}>
-                <Header logoUrl={config.logoUrl} whatsappBookingLink={config.whatsappLinks.booking} />
+                <Header logoUrl={config.logoUrl} whatsappBookingLink={config.whatsappLinks.booking} activeLocales={getActiveLocales()} />
                 <main>{children}</main>
                 <Footer config={config} locale={locale} />
                 <CookieBanner />
