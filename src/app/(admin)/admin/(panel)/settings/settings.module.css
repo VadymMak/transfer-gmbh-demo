@@ -321,7 +321,7 @@
 }
 
 .toggle input:checked + .track {
-  background: #22c55e;
+  background: var(--admin-kate-bronze);
 }
 
 .toggle input:checked + .track::after {

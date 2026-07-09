@@ -26,10 +26,10 @@ function EyeIcon({ off }: { off?: boolean }) {
 
 function Toggle({ checked, onChange, disabled }: { checked: boolean; onChange: (v: boolean) => void; disabled?: boolean }) {
   return (
-    <span className={`${styles.toggle} ${disabled ? styles.toggleDisabled : ''}`}>
+    <label className={`${styles.toggle} ${disabled ? styles.toggleDisabled : ''}`} style={{ cursor: disabled ? 'default' : 'pointer' }}>
       <input type="checkbox" checked={checked} disabled={disabled} onChange={(e) => onChange(e.target.checked)} />
       <span className={styles.track} />
-    </span>
+    </label>
   );
 }
 
