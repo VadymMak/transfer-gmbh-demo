@@ -122,9 +122,9 @@ export default async function ContactSection({
               </div>
             )}
 
-            {hoursData.length > 0 && (
-              <div>
-                <p className="contact-item-label">{tContact('openingHoursLabel')}</p>
+            <div>
+              <p className="contact-item-label">{tContact('openingHoursLabel')}</p>
+              {hoursData.length > 0 ? (
                 <div className="contact-hours-grid">
                   {hoursData.map((row, idx) => (
                     <Fragment key={idx}>
@@ -138,8 +138,10 @@ export default async function ContactSection({
                     </Fragment>
                   ))}
                 </div>
-              </div>
-            )}
+              ) : (
+                <p className="contact-item-value">{tContact('available247')}</p>
+              )}
+            </div>
 
             {whatsappLocationLink && whatsappLocationLink !== '#' && (
               <a

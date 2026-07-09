@@ -674,6 +674,7 @@
     "addressLabel": "Address",
     "contactLabel": "Contact",
     "openingHoursLabel": "Opening Hours",
+    "available247": "24/7 · Around the clock",
     "writeToUs": "Message Us",
     "mapTitle": "Map {city}"
   },

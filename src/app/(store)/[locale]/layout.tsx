@@ -36,6 +36,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const config = await getStoreConfig();
+  const baseUrl = getBaseUrl();
 
   const titles: Record<string, string> = {
     de: 'Flughafentransfer Wien ⇄ Bratislava | Transfer GmbH',
@@ -53,6 +55,7 @@ export async function generateMetadata({
   const title = titles[locale] ?? titles.de;
   const description = descriptions[locale] ?? descriptions.de;
   const ogLocale = locale === 'de' ? 'de_DE' : locale === 'sk' ? 'sk_SK' : locale === 'cs' ? 'cs_CZ' : 'en_US';
+  const ogImage = config.ogImageUrl ?? `${baseUrl}/og-image.jpg`;
 
   return {
     title,
@@ -62,7 +65,7 @@ export async function generateMetadata({
       description,
       locale: ogLocale,
       type: 'website',
-      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Transfer GmbH' }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: 'Transfer GmbH' }],
     },
     twitter: {
       card: 'summary_large_image',

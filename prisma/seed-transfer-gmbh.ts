@@ -54,7 +54,7 @@ async function main() {
   // 1. Store
   const store = await db.store.upsert({
     where: { slug: 'transfer-gmbh' },
-    update: { themeConfig: navyTheme },
+    update: { themeConfig: navyTheme, openingHours: null },
     create: {
       slug: 'transfer-gmbh',
       name: 'Transfer GmbH',
