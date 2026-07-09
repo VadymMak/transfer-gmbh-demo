@@ -50,8 +50,8 @@ export default async function HomePage({
     // Fleet: services with category 'fleet'
     db.service.findMany({
       where: { storeId: config.id, active: true, category: 'fleet' },
-      orderBy: { price: 'asc' },
-      select: { id: true, nameKey: true, description: true },
+      orderBy: { sortOrder: 'asc' },
+      select: { id: true, nameKey: true, description: true, image: true, metadata: true },
     }),
   ]);
 

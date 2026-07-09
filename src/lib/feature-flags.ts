@@ -9,4 +9,5 @@ export const FLAGS = {
   digitalProducts: process.env.NEXT_PUBLIC_ENABLE_DIGITAL_PRODUCTS !== 'false',
   courses:         process.env.NEXT_PUBLIC_ENABLE_COURSES === 'true',
   payment:         process.env.NEXT_PUBLIC_ENABLE_PAYMENT === 'true',
+  fleet:           process.env.NEXT_PUBLIC_ENABLE_FLEET === 'true',
 } as const;

@@ -204,6 +204,18 @@ const NAV_SERVICES_ALL: (NavItem & { show: boolean })[] = [
     ),
   },
   {
+    href: '/admin/fleet',
+    labelKey: 'fleet',
+    show: FLAGS.fleet,
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" {...ico}>
+        <path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h11l4 4v4a2 2 0 0 1-2 2h-1" />
+        <circle cx="7" cy="17" r="2" />
+        <circle cx="17" cy="17" r="2" />
+      </svg>
+    ),
+  },
+  {
     href: '/admin/gallery',
     labelKey: 'gallery',
     show: false,

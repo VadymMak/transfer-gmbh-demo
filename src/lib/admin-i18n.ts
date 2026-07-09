@@ -7,6 +7,7 @@ export interface AdminTranslations {
     services: string;
     reservations: string;
     masters: string;
+    fleet: string;
     gallery: string;
     reviews: string;
     products: string;
@@ -323,6 +324,23 @@ export interface AdminTranslations {
     backLink: string;
     active: string;
   };
+  fleet: {
+    title: string;
+    add: string;
+    noVehicles: string;
+    deleteConfirm: string;
+    newTitle: string;
+    editTitle: string;
+    nameLabel: string;
+    capacityLabel: string;
+    luggageLabel: string;
+    descriptionLabel: string;
+    imageLabel: string;
+    imageUploadError: string;
+    saveBtn: string;
+    backLink: string;
+    active: string;
+  };
   hero: {
     title: string;
     titleLabel: string;
@@ -492,6 +510,7 @@ const SK: AdminTranslations = {
     services:     'Služby',
     reservations: 'Rezervácie',
     masters:      'Majstri',
+    fleet:        'Vozový park',
     gallery:      'Galéria',
     reviews:      'Recenzie',
     products:     'Produkty',
@@ -842,6 +861,23 @@ const SK: AdminTranslations = {
     backLink:         '← Späť na zoznam',
     active:           'Aktívny (viditeľný na webe)',
   },
+  fleet: {
+    title:           'Vozový park',
+    add:             '+ Pridať vozidlo',
+    noVehicles:      'Žiadne vozidlá. Pridajte prvé.',
+    deleteConfirm:   'Vymazať vozidlo "{name}"?',
+    newTitle:        'Nové vozidlo',
+    editTitle:       'Upraviť vozidlo',
+    nameLabel:       'Názov vozidla',
+    capacityLabel:   'Kapacita (cestujúci)',
+    luggageLabel:    'Batožina',
+    descriptionLabel:'Popis',
+    imageLabel:      'Fotografia vozidla',
+    imageUploadError:'Chyba pri nahrávaní fotografie',
+    saveBtn:         'Uložiť vozidlo',
+    backLink:        '← Späť na vozový park',
+    active:          'Aktívne (viditeľné na webe)',
+  },
   hero: {
     title:           'Hero sekcia',
     titleLabel:      'Nadpis',
@@ -1011,6 +1047,7 @@ const EN: AdminTranslations = {
     services:     'Services',
     reservations: 'Reservations',
     masters:      'Masters',
+    fleet:        'Fleet',
     gallery:      'Gallery',
     reviews:      'Reviews',
     products:     'Products',
@@ -1361,6 +1398,23 @@ const EN: AdminTranslations = {
     backLink:         '← Back to list',
     active:           'Active (visible on website)',
   },
+  fleet: {
+    title:           'Fleet',
+    add:             '+ Add vehicle',
+    noVehicles:      'No vehicles yet. Add the first one.',
+    deleteConfirm:   'Delete vehicle "{name}"?',
+    newTitle:        'New vehicle',
+    editTitle:       'Edit vehicle',
+    nameLabel:       'Vehicle name',
+    capacityLabel:   'Capacity (passengers)',
+    luggageLabel:    'Luggage',
+    descriptionLabel:'Description',
+    imageLabel:      'Vehicle photo',
+    imageUploadError:'Photo upload failed',
+    saveBtn:         'Save vehicle',
+    backLink:        '← Back to fleet',
+    active:          'Active (visible on website)',
+  },
   hero: {
     title:           'Hero section',
     titleLabel:      'Title',
@@ -1530,6 +1584,7 @@ const CS: AdminTranslations = {
     services:     'Služby',
     reservations: 'Rezervace',
     masters:      'Mistři',
+    fleet:        'Vozový park',
     gallery:      'Galerie',
     reviews:      'Recenze',
     products:     'Produkty',
@@ -1880,6 +1935,23 @@ const CS: AdminTranslations = {
     backLink:         '← Zpět na seznam',
     active:           'Aktivní (viditelný na webu)',
   },
+  fleet: {
+    title:           'Vozový park',
+    add:             '+ Přidat vozidlo',
+    noVehicles:      'Žádná vozidla. Přidejte první.',
+    deleteConfirm:   'Smazat vozidlo "{name}"?',
+    newTitle:        'Nové vozidlo',
+    editTitle:       'Upravit vozidlo',
+    nameLabel:       'Název vozidla',
+    capacityLabel:   'Kapacita (cestující)',
+    luggageLabel:    'Zavazadla',
+    descriptionLabel:'Popis',
+    imageLabel:      'Fotografie vozidla',
+    imageUploadError:'Chyba při nahrávání fotografie',
+    saveBtn:         'Uložit vozidlo',
+    backLink:        '← Zpět na vozový park',
+    active:          'Aktivní (viditelné na webu)',
+  },
   hero: {
     title:           'Hero sekce',
     titleLabel:      'Nadpis',
@@ -2049,6 +2121,7 @@ const DE: AdminTranslations = {
     services:     'Leistungen',
     reservations: 'Reservierungen',
     masters:      'Mitarbeiter',
+    fleet:        'Fuhrpark',
     gallery:      'Galerie',
     reviews:      'Bewertungen',
     products:     'Produkte',
@@ -2399,6 +2472,23 @@ const DE: AdminTranslations = {
     backLink:         '← Zurück zur Liste',
     active:           'Aktiv (auf der Website sichtbar)',
   },
+  fleet: {
+    title:           'Fuhrpark',
+    add:             '+ Fahrzeug hinzufügen',
+    noVehicles:      'Keine Fahrzeuge. Fügen Sie das erste hinzu.',
+    deleteConfirm:   'Fahrzeug "{name}" löschen?',
+    newTitle:        'Neues Fahrzeug',
+    editTitle:       'Fahrzeug bearbeiten',
+    nameLabel:       'Fahrzeugname',
+    capacityLabel:   'Kapazität (Passagiere)',
+    luggageLabel:    'Gepäck',
+    descriptionLabel:'Beschreibung',
+    imageLabel:      'Fahrzeugfoto',
+    imageUploadError:'Fehler beim Hochladen des Fotos',
+    saveBtn:         'Fahrzeug speichern',
+    backLink:        '← Zurück zum Fuhrpark',
+    active:          'Aktiv (auf der Website sichtbar)',
+  },
   hero: {
     title:           'Hero-Bereich',
     titleLabel:      'Titel',
@@ -2568,6 +2658,7 @@ const UK: AdminTranslations = {
     services:     'Послуги',
     reservations: 'Бронювання',
     masters:      'Майстри',
+    fleet:        'Автопарк',
     gallery:      'Галерея',
     reviews:      'Відгуки',
     products:     'Товари',
@@ -2918,6 +3009,23 @@ const UK: AdminTranslations = {
     backLink:         '← Назад до списку',
     active:           'Активний (видимий на сайті)',
   },
+  fleet: {
+    title:           'Автопарк',
+    add:             '+ Додати транспорт',
+    noVehicles:      'Немає транспорту. Додайте перший.',
+    deleteConfirm:   'Видалити "{name}"?',
+    newTitle:        'Новий транспорт',
+    editTitle:       'Редагувати транспорт',
+    nameLabel:       'Назва транспорту',
+    capacityLabel:   'Місткість (пасажири)',
+    luggageLabel:    'Багаж',
+    descriptionLabel:'Опис',
+    imageLabel:      'Фото транспорту',
+    imageUploadError:'Помилка завантаження фото',
+    saveBtn:         'Зберегти',
+    backLink:        '← Назад до автопарку',
+    active:          'Активний (видимий на сайті)',
+  },
   hero: {
     title:           'Головний банер',
     titleLabel:      'Заголовок (title)',
@@ -3087,6 +3195,7 @@ const RU: AdminTranslations = {
     services:     'Услуги',
     reservations: 'Бронирования',
     masters:      'Мастера',
+    fleet:        'Автопарк',
     gallery:      'Галерея',
     reviews:      'Отзывы',
     products:     'Товары',
@@ -3437,6 +3546,23 @@ const RU: AdminTranslations = {
     backLink:         '← Назад к списку',
     active:           'Активный (виден на сайте)',
   },
+  fleet: {
+    title:           'Автопарк',
+    add:             '+ Добавить транспорт',
+    noVehicles:      'Транспорт не добавлен. Добавьте первый.',
+    deleteConfirm:   'Удалить "{name}"?',
+    newTitle:        'Новый транспорт',
+    editTitle:       'Редактировать транспорт',
+    nameLabel:       'Название транспорта',
+    capacityLabel:   'Вместимость (пассажиры)',
+    luggageLabel:    'Багаж',
+    descriptionLabel:'Описание',
+    imageLabel:      'Фото транспорта',
+    imageUploadError:'Ошибка загрузки фото',
+    saveBtn:         'Сохранить',
+    backLink:        '← Назад к автопарку',
+    active:          'Активный (виден на сайте)',
+  },
   hero: {
     title:           'Главный баннер',
     titleLabel:      'Заголовок (title)',
@@ -3606,6 +3732,7 @@ const PL: AdminTranslations = {
     services:     'Usługi',
     reservations: 'Rezerwacje',
     masters:      'Mistrzowie',
+    fleet:        'Flota',
     gallery:      'Galeria',
     reviews:      'Opinie',
     products:     'Produkty',
@@ -3955,6 +4082,23 @@ const PL: AdminTranslations = {
     deleteBtn:        'Usuń mistrza',
     backLink:         '← Powrót do listy',
     active:           'Aktywny (widoczny na stronie)',
+  },
+  fleet: {
+    title:           'Flota',
+    add:             '+ Dodaj pojazd',
+    noVehicles:      'Brak pojazdów. Dodaj pierwszy.',
+    deleteConfirm:   'Usunąć pojazd "{name}"?',
+    newTitle:        'Nowy pojazd',
+    editTitle:       'Edytuj pojazd',
+    nameLabel:       'Nazwa pojazdu',
+    capacityLabel:   'Pojemność (pasażerowie)',
+    luggageLabel:    'Bagaż',
+    descriptionLabel:'Opis',
+    imageLabel:      'Zdjęcie pojazdu',
+    imageUploadError:'Błąd przesyłania zdjęcia',
+    saveBtn:         'Zapisz pojazd',
+    backLink:        '← Powrót do floty',
+    active:          'Aktywny (widoczny na stronie)',
   },
   hero: {
     title:           'Baner główny',

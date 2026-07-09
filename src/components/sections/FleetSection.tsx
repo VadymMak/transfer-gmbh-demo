@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import GoldDivider from '@/components/ui/GoldDivider';
 import ScrollReveal from '@/components/ui/ScrollReveal';
@@ -6,6 +7,7 @@ interface FleetVehicle {
   id: string;
   nameKey: string;
   description: string | null;
+  image: string | null;
   metadata?: unknown;
 }
 
@@ -34,50 +36,53 @@ export default async function FleetSection({ fleet }: FleetSectionProps) {
       <div className="team-grid">
         {fleet.map((vehicle, i) => {
           const meta = (vehicle.metadata as VehicleMeta) ?? {};
-          const capacity = meta?.capacity ?? '';
-          const luggage  = meta?.luggage  ?? '';
-          const model    = meta?.model    ?? '';
 
           return (
             <ScrollReveal key={vehicle.id} direction="up" delay={i * 120}>
               <div className="team-card">
                 <div className="team-photo-container">
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      height: '100%',
-                      background: 'var(--color-bg-card)',
-                      border: '1px solid var(--color-border)',
-                    }}
-                  >
-                    <svg
-                      width="80"
-                      height="80"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="var(--color-gold)"
-                      strokeWidth="1.5"
-                    >
-                      <path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h13l4 4v4a2 2 0 0 1-2 2h-2M5 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0zm10 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0z" />
-                    </svg>
-                  </div>
+                  {vehicle.image ? (
+                    <Image
+                      src={vehicle.image}
+                      alt={vehicle.nameKey}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="team-photo"
+                      unoptimized={vehicle.image.startsWith('http')}
+                    />
+                  ) : (
+                    <div className="fleet-placeholder">
+                      <svg
+                        width="80"
+                        height="80"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="var(--color-primary)"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h11l4 4v4a2 2 0 0 1-2 2h-1" />
+                        <circle cx="7" cy="17" r="2" />
+                        <circle cx="17" cy="17" r="2" />
+                      </svg>
+                    </div>
+                  )}
                 </div>
 
                 <h3 className="team-name">{vehicle.nameKey}</h3>
 
-                {capacity && (
+                {meta.capacity && (
                   <p className="team-role">
-                    {t('capacityLabel')}: {capacity}
+                    {t('capacityLabel')}: {meta.capacity}
                   </p>
                 )}
 
-                {(luggage || model) && (
+                {(meta.luggage || meta.model) && (
                   <p className="team-exp">
-                    {luggage && `${t('luggageLabel')}: ${luggage}`}
-                    {luggage && model && ' · '}
-                    {model && `${t('modelLabel')}: ${model}`}
+                    {meta.luggage && `${t('luggageLabel')}: ${meta.luggage}`}
+                    {meta.luggage && meta.model && ' · '}
+                    {meta.model && `${t('modelLabel')}: ${meta.model}`}
                   </p>
                 )}
 

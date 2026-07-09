@@ -461,6 +461,7 @@ model Service {
   image       String?
   category    String?
   metadata    Json?
+  sortOrder   Int     @default(0)
   active      Boolean @default(true)
 
   appointments Appointment[]
