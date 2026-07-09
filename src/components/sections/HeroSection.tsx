@@ -64,15 +64,13 @@ export default async function HeroSection({
           <p className="hero__subtitle">{subtitle}</p>
 
           <div className="hero__chips">
-            <span className="hero__chip">{tHero('chipCut')}</span>
-            <span className="hero__chip">{tHero('chipBeard')}</span>
-            <span className="hero__chip">{tHero('chipShave')}</span>
-            <span className="hero__chip">{tHero('chipCourses')}</span>
+            <span className="hero__chip">{tHero('chip1')}</span>
+            <span className="hero__chip">{tHero('chip2')}</span>
+            <span className="hero__chip">{tHero('chip3')}</span>
+            <span className="hero__chip">{tHero('chip4')}</span>
           </div>
 
-          <p className="hero__price-anchor">
-            {tHero('priceFrom')} <strong>€15</strong> · {tHero('priceBeardFrom')} <strong>€10</strong>
-          </p>
+          <p className="hero__price-anchor">{tHero('priceAnchor')}</p>
 
           <div className="hero__buttons">
             <a href="#rezervacia" className="btn-primary">
