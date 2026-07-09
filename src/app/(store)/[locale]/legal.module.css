@@ -1,21 +1,23 @@
 .page,
 .legal {
-  padding: var(--spacing-lg) 0;
+  /* top padding clears the fixed header so content isn't hidden behind it */
+  padding: calc(var(--header-height, 88px) + 2rem) 0 3rem;
   min-height: 60vh;
+  background: var(--color-bg);
 }
 
 .container,
 .legal__inner {
   max-width: 760px;
   margin: 0 auto;
-  padding: 0 var(--spacing-sm);
+  padding: 0 1.5rem;
 }
 
 .title,
 .legal__title {
   font-size: var(--font-size-2xl);
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-text);
   margin: 0 0 var(--spacing-md);
   border-bottom: 2px solid var(--color-border);
   padding-bottom: var(--spacing-xs);
@@ -35,7 +37,7 @@
 .heading {
   font-size: var(--font-size-lg);
   font-weight: 600;
-  color: var(--color-text-primary);
+  color: var(--color-text);
   margin: 0 0 var(--spacing-xs);
 }
 
@@ -56,14 +58,14 @@
 
 .section a,
 .legal__section a {
-  color: var(--color-gold);
+  color: var(--color-primary);
   text-decoration: underline;
   word-break: break-all;
 }
 
 .section a:hover,
 .legal__section a:hover {
-  color: var(--color-gold-dark);
+  color: var(--color-primary-dark);
 }
 
 .section ul,
@@ -83,6 +85,6 @@
 .legal__section h2 {
   font-size: var(--font-size-lg);
   font-weight: 600;
-  color: var(--color-text-primary);
+  color: var(--color-text);
   margin: 0 0 var(--spacing-xs);
 }

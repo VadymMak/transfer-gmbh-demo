@@ -160,6 +160,13 @@ export default async function Footer({ config, locale }: FooterProps) {
           <span>·</span>
           <a href={`/${locale}/datenschutz`}>{tFooter('privacyPolicy')}</a>
         </p>
+        <p className="footer__bottom-links footer__credit">
+          Design:{' '}
+          <a href="https://formaink.com" target="_blank" rel="noopener noreferrer">FormaInk</a>
+          <span>·</span>
+          Powered by{' '}
+          <a href="https://smartctx.dev" target="_blank" rel="noopener noreferrer">SmartContext.dev</a>
+        </p>
       </div>
     </footer>
   );
