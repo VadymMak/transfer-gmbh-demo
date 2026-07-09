@@ -9,6 +9,7 @@ import RoutesSection from '@/components/sections/RoutesSection';
 import FleetSection from '@/components/sections/FleetSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import WhyUsSection from '@/components/sections/WhyUsSection';
+import AboutSection from '@/components/sections/AboutSection';
 import GallerySection from '@/components/sections/GallerySection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import ContactSection from '@/components/sections/ContactSection';
@@ -73,6 +74,7 @@ export default async function HomePage({
       <FleetSection fleet={dbFleet} />
       <ServicesSection />
       <WhyUsSection city={presence.city} googleRating={presence.googleRating} address={presence.address} />
+      <AboutSection aboutImage={config.aboutImage} />
       <GallerySection images={galleryImages} layout={config.galleryLayout ?? undefined} />
       <TestimonialsSection testimonials={dbTestimonials.map((t) => ({
         id: t.id,

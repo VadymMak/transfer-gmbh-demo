@@ -680,14 +680,16 @@
   "about": {
     "label": "O nás",
     "title": "Váš spolehlivý partner pro transfery",
-    "text1": "Transfer GmbH byla založena zkušenými profesionálními řidiči, kteří vědí, co cestující potřebují: dochvilnost, spolehlivost a diskrétnost.",
-    "text2": "Ať obchodní cesta, rodinný výlet nebo letištní transfer — bezpečně a pohodlně vás dovezeme na místo.",
+    "text1": "Transfer GmbH už od roku 2018 znamená spolehlivé a pohodlné letištní transfery mezi Vídní a Bratislavou. Jako licencovaná přepravní společnost se zkušenými, profesionálními řidiči vás dopravíme do cíle bezpečně, včas a bez stresu.",
+    "text2": "Každá jízda je pro nás víc než jen trasa — postaráme se o každý detail, abyste se mohli pohodlně opřít a odpočinout si. Pevné ceny, sledování letu a osobní meet-and-greet servis jsou u nás samozřejmostí.",
     "stat1Value": "5+",
     "stat1Label": "Let v provozu",
     "stat2Value": "2 000+",
     "stat2Label": "Dokončených jízd",
     "stat3Value": "4.9",
-    "stat3Label": "Ø hodnocení Google"
+    "stat3Label": "Ø hodnocení Google",
+    "imageAlt": "Tým Transfer GmbH",
+    "text3": "Vítejte na palubě."
   },
   "whyUs": {
     "sectionLabel": "Proč my",

@@ -680,14 +680,16 @@
   "about": {
     "label": "Über uns",
     "title": "Ihr verlässlicher Partner für Transfers",
-    "text1": "Transfer GmbH wurde von erfahrenen Berufskraftfahrern gegründet, die selbst wissen, was Reisende brauchen: Pünktlichkeit, Verlässlichkeit und Diskretion.",
-    "text2": "Ob Geschäftsreise, Familienausflug oder Flughafentransfer — wir bringen Sie sicher und komfortabel ans Ziel.",
+    "text1": "Transfer GmbH steht seit 2018 für zuverlässige und komfortable Flughafentransfers zwischen Wien und Bratislava. Als konzessioniertes Transportunternehmen mit erfahrenen, professionellen Fahrern bringen wir Sie sicher, pünktlich und stressfrei an Ihr Ziel.",
+    "text2": "Jede Fahrt ist für uns mehr als nur eine Strecke — wir kümmern uns um jedes Detail, damit Sie sich zurücklehnen und entspannen können. Festpreise, Flugverfolgung und ein persönlicher Meet-&-Greet-Service gehören für uns selbstverständlich dazu.",
     "stat1Value": "5+",
     "stat1Label": "Jahre im Betrieb",
     "stat2Value": "2 000+",
     "stat2Label": "Fahrten absolviert",
     "stat3Value": "4.9",
-    "stat3Label": "Ø Google-Bewertung"
+    "stat3Label": "Ø Google-Bewertung",
+    "imageAlt": "Transfer GmbH Team",
+    "text3": "Willkommen an Bord."
   },
   "whyUs": {
     "sectionLabel": "Warum Transfer GmbH",

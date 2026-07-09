@@ -679,15 +679,17 @@
   },
   "about": {
     "label": "About us",
-    "title": "Your reliable transfer partner",
-    "text1": "Transfer GmbH was founded by experienced professional drivers who know what travellers need: punctuality, reliability, and discretion.",
-    "text2": "Business trip, family holiday, or airport transfer — we get you there safely and comfortably.",
+    "title": "Your reliable partner for transfers",
+    "text1": "Since 2018, Transfer GmbH has stood for reliable and comfortable airport transfers between Vienna and Bratislava. As a licensed transport company with experienced, professional drivers, we get you to your destination safely, on time and stress-free.",
+    "text2": "For us, every trip is more than just a route — we take care of every detail so you can sit back and relax. Fixed prices, flight tracking and a personal meet-and-greet service are a matter of course for us.",
     "stat1Value": "5+",
     "stat1Label": "Years operating",
     "stat2Value": "2,000+",
     "stat2Label": "Rides completed",
     "stat3Value": "4.9",
-    "stat3Label": "Avg. Google rating"
+    "stat3Label": "Avg. Google rating",
+    "imageAlt": "Transfer GmbH team",
+    "text3": "Welcome aboard."
   },
   "whyUs": {
     "sectionLabel": "Why Transfer GmbH",
