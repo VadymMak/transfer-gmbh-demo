@@ -31,7 +31,7 @@ export const REGION_BUNDLES = {
  * a rebuild. Falls back to `UA`.
  */
 export const activeBundle: RegionBundle =
-  process.env.REGION_BUNDLE === 'EU' ? 'EU' : 'UA';
+  process.env.REGION_BUNDLE === 'UA' ? 'UA' : 'EU';
 
 /** Locales exposed to users for the active bundle (e.g. for a language switcher). */
 export function getActiveLocales(): Locale[] {

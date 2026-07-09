@@ -714,5 +714,45 @@
   "seo": {
     "description": "Profesjonalny barbershop i salon fryzjerski w {city}. Strzyżenia męskie, pielęgnacja brody i stylizacja.",
     "ogLocale": "pl_PL"
+  },
+  "transferQuote": {
+    "label": "Oferta",
+    "title": "Zapytanie o transfer",
+    "subtitle": "Wypełnij formularz, a my skontaktujemy się natychmiast.",
+    "fieldPickup": "Skąd",
+    "fieldDropoff": "Dokąd",
+    "fieldDate": "Data",
+    "fieldTime": "Godzina",
+    "fieldPassengers": "Pasażerowie",
+    "fieldLuggage": "Bagaż",
+    "fieldFlight": "Numer lotu",
+    "fieldName": "Imię i nazwisko",
+    "fieldPhone": "Telefon",
+    "fieldNote": "Wiadomość",
+    "flightOptional": "(opcjonalnie, np. OS 123)",
+    "noteOptional": "(opcjonalnie)",
+    "submit": "Wyślij przez WhatsApp",
+    "submitting": "Zapisuję...",
+    "successNote": "Wniosek zapisany. Po kliknięciu WhatsApp otworzy się do potwierdzenia.",
+    "errorRequired": "Proszę wypełnić wszystkie wymagane pola.",
+    "errorSave": "Błąd podczas zapisu. Spróbuj ponownie.",
+    "errorNetwork": "Błąd sieci. Spróbuj ponownie."
+  },
+  "routes": {
+    "label": "Cennik",
+    "title": "Trasy i ceny",
+    "subtitle": "Przejrzyste stałe ceny na podróż",
+    "priceLabel": "Cena stała",
+    "routeLabel": "Trasa",
+    "durationLabel": "Czas przejazdu",
+    "note": "Wszystkie ceny są stałe z VAT. Brak ukrytych kosztów."
+  },
+  "fleet": {
+    "label": "Pojazdy",
+    "title": "Nasza flota",
+    "subtitle": "Komfort i styl na każdą podróż",
+    "capacityLabel": "Pojemność",
+    "luggageLabel": "Bagaż",
+    "modelLabel": "Model"
   }
 }

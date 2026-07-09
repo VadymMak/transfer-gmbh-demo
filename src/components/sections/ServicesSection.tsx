@@ -23,14 +23,18 @@ export default function ServicesSection() {
     fetch('/api/services')
       .then((r) => r.json())
       .then((d: { services?: Service[] }) => {
-        setServices(d.services ?? []);
+        setServices(
+          (d.services ?? []).filter(
+            (s) => s.category !== 'route' && s.category !== 'fleet',
+          ),
+        );
         setLoading(false);
       })
       .catch(() => setLoading(false));
   }, []);
 
   return (
-    <section id="sluzby" className="services">
+    <section id="leistungen" className="services">
       <ScrollReveal direction="up" className="section-header">
         <p className="section-label">{t('title')}</p>
         <h2 className="section-title">{t('subtitle')}</h2>

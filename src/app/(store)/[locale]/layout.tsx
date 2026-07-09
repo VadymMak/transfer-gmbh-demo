@@ -35,68 +35,40 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  setRequestLocale(locale);
 
-  const config = await getStoreConfig();
-  const baseUrl = getBaseUrl();
-  const tSeo = await getTranslations('seo');
+  const titles: Record<string, string> = {
+    de: 'Flughafentransfer Wien ⇄ Bratislava | Transfer GmbH',
+    sk: 'Letiskový transfer Viedeň ⇄ Bratislava | Transfer GmbH',
+    cs: 'Letištní transfer Vídeň ⇄ Bratislava | Transfer GmbH',
+    en: 'Airport Transfer Vienna ⇄ Bratislava | Transfer GmbH',
+  };
+  const descriptions: Record<string, string> = {
+    de: 'Professionelle Flughafentransfers Wien (VIE) ⇄ Bratislava (BTS). Festpreise, lizenziert, 24/7. Einfach online anfragen.',
+    sk: 'Profesionálne letiskové transfery Viedeň (VIE) ⇄ Bratislava (BTS). Pevné ceny, licencovaní, 24/7. Objednajte online.',
+    cs: 'Profesionální letištní transfery Vídeň (VIE) ⇄ Bratislava (BTS). Pevné ceny, licencováni, 24/7. Objednejte online.',
+    en: 'Professional airport transfers Vienna (VIE) ⇄ Bratislava (BTS). Fixed prices, licensed, 24/7. Book online.',
+  };
 
-  const seoDescription = tSeo('description', { city: config.presence.city ?? '' });
-  const ogImageUrl = config.ogImageUrl ?? `${baseUrl}/og-image.jpg`;
-  const ogLocale = tSeo('ogLocale');
-  const alternateLocale = routing.locales
-    .filter((l) => l !== locale)
-    .map((l) => {
-      const localeMap: Record<string, string> = {
-        en: 'en_US',
-        uk: 'uk_UA',
-        ru: 'ru_RU',
-        de: 'de_DE',
-        sk: 'sk_SK',
-        cs: 'cs_CZ',
-        pl: 'pl_PL',
-      };
-      return localeMap[l] ?? l;
-    });
-
-  const languages: Record<string, string> = {};
-  for (const l of routing.locales) {
-    languages[l] = `${baseUrl}/${l}`;
-  }
+  const title = titles[locale] ?? titles.de;
+  const description = descriptions[locale] ?? descriptions.de;
+  const ogLocale = locale === 'de' ? 'de_DE' : locale === 'sk' ? 'sk_SK' : locale === 'cs' ? 'cs_CZ' : 'en_US';
 
   return {
-    title: {
-      default: config.name,
-      template: `%s | ${config.name}`,
-    },
-    description: seoDescription,
-    metadataBase: new URL(baseUrl),
-    alternates: {
-      canonical: `${baseUrl}/${locale}`,
-      languages,
-    },
+    title,
+    description,
     openGraph: {
-      type: 'website',
-      siteName: config.name,
-      title: config.name,
-      description: seoDescription,
-      url: `${baseUrl}/${locale}`,
+      title,
+      description,
       locale: ogLocale,
-      alternateLocale,
-      images: [
-        { url: ogImageUrl, width: 1200, height: 630, alt: config.name },
-      ],
+      type: 'website',
+      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Transfer GmbH' }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: config.name,
-      description: seoDescription,
-      images: [ogImageUrl],
+      title,
+      description,
     },
-    robots: {
-      index: true,
-      follow: true,
-    },
+    robots: { index: true, follow: true },
   };
 }
 

@@ -99,12 +99,12 @@ export default async function Footer({ config, locale, legalEnabled }: FooterPro
         <div className="footer__col">
           <h4 className="footer__heading">{tFooter('servicesNavTitle')}</h4>
           <ul className="footer__links">
-            <li><a href="#sluzby">{tFooter('navServices')}</a></li>
-            <li><a href="#galeria">{tFooter('navGallery')}</a></li>
-            <li><a href="#tim">{tFooter('navTeam')}</a></li>
-            <li><a href="#recenzie">{tFooter('navReviews')}</a></li>
-            <li><a href="#o-nas">{tFooter('navAbout')}</a></li>
-            <li><a href="#rezervacia">{tFooter('navBooking')}</a></li>
+            <li><a href="#angebot">{tFooter('navBooking')}</a></li>
+            <li><a href="#strecken">{tFooter('navServices')}</a></li>
+            <li><a href="#fuhrpark">{tFooter('navTeam')}</a></li>
+            <li><a href="#leistungen">{tFooter('navAbout')}</a></li>
+            <li><a href="#galerie">{tFooter('navGallery')}</a></li>
+            <li><a href="#kontakt">{tFooter('navReviews')}</a></li>
           </ul>
         </div>
 

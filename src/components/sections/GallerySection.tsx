@@ -25,7 +25,7 @@ export default function GallerySection({ images, layout }: GallerySectionProps) 
   const gridClass = `gallery-grid gallery-grid--${layout || 'grid-3'}`;
 
   return (
-    <section id="galeria" className="gallery">
+    <section id="galerie" className="gallery">
       <ScrollReveal direction="up" className="section-header">
         <p className="section-label">{t('title')}</p>
         <h2 className="section-title">{t('subtitle')}</h2>

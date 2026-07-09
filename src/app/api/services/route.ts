@@ -9,7 +9,7 @@ export async function GET() {
     if (!store) return NextResponse.json({ services: [] });
 
     const services = await db.service.findMany({
-      where: { storeId: store.id, active: true },
+      where: { storeId: store.id, active: true, category: { notIn: ['route', 'fleet'] } },
       orderBy: [{ category: 'asc' }, { price: 'asc' }],
       select: {
         id: true,

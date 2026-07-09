@@ -1,17 +1,8 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { db } from '@/lib/db';
+import { setRequestLocale } from 'next-intl/server';
 import styles from '../legal.module.css';
 
-export const revalidate = 300;
-
-const STORE_SLUG = process.env.STORE_SLUG ?? '';
-
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'Datenschutzerklärung',
-    robots: { index: false, follow: false },
-  };
+export async function generateMetadata() {
+  return { title: 'Datenschutzerklärung | Transfer GmbH', robots: { index: false } };
 }
 
 export default async function DatenschutzPage({
@@ -20,147 +11,51 @@ export default async function DatenschutzPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (locale !== 'de') notFound();
-
-  const store = await db.store.findUnique({ where: { slug: STORE_SLUG } });
-  const legal = store
-    ? await db.legalConfig.findUnique({ where: { storeId: store.id } })
-    : null;
-  if (!legal?.enabled) notFound();
+  setRequestLocale(locale);
 
   return (
-    <main className={styles.page}>
-      <div className={styles.container}>
-        <h1 className={styles.title}>Datenschutzerklärung</h1>
+    <main className={styles.legal}>
+      <div className={styles.legal__inner}>
+        <h1 className={styles.legal__title}>Datenschutzerklärung</h1>
+        <p className={styles.legal__subtitle}>Gemäß DSGVO (EU) 2016/679</p>
 
-        <section className={styles.section}>
-          <h2 className={styles.heading}>1. Verantwortlicher</h2>
-          <p>
-            Verantwortlicher im Sinne der DSGVO ist:
-            <br />
-            <br />
-            <strong>{legal.companyName}</strong>
-            <br />
-            {legal.street}, {legal.zip} {legal.city}, {legal.country}
-            <br />
-            E-Mail: <a href={`mailto:${legal.email}`}>{legal.email}</a>
-            {legal.phone && (
-              <>
-                <br />
-                Telefon: {legal.phone}
-              </>
-            )}
-          </p>
+        <section className={styles.legal__section}>
+          <h2>1. Verantwortlicher</h2>
+          <p>Transfer GmbH<br />
+          Wiedner Hauptstraße 120, 1050 Wien<br />
+          E-Mail: info@transfer-gmbh.at</p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.heading}>2. Grundsätze der Datenverarbeitung</h2>
-          <p>
-            Wir verarbeiten personenbezogene Daten unserer Nutzer grundsätzlich nur, soweit dies zur
-            Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen
-            erforderlich ist. Die Verarbeitung personenbezogener Daten erfolgt regelmäßig nur nach
-            Einwilligung des Nutzers.
-          </p>
+        <section className={styles.legal__section}>
+          <h2>2. Erhobene Daten</h2>
+          <p>Bei der Nutzung des Anfrageformulars erheben wir folgende personenbezogene Daten: Name, Telefonnummer, Abfahrts- und Ankunftsort, Reisedatum und -uhrzeit, Flugnummer (optional) sowie optionale Nachrichten.</p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.heading}>3. Server-Logfiles</h2>
-          <p>
-            Beim Besuch unserer Website werden automatisch Informationen in sogenannten
-            Server-Logfiles gespeichert:
-          </p>
-          <ul>
-            <li>Browsertyp und Browserversion</li>
-            <li>Verwendetes Betriebssystem</li>
-            <li>Referrer-URL</li>
-            <li>Hostname des zugreifenden Rechners</li>
-            <li>Uhrzeit der Serveranfrage</li>
-            <li>IP-Adresse (anonymisiert)</li>
-          </ul>
-          <p>
-            Diese Daten sind nicht bestimmten Personen zuordenbar und werden nach 30 Tagen
-            automatisch gelöscht.
-          </p>
+        <section className={styles.legal__section}>
+          <h2>3. Zweck der Verarbeitung</h2>
+          <p>Die erhobenen Daten werden ausschließlich zur Bearbeitung Ihrer Transferanfrage und zur Kommunikation über WhatsApp verwendet.</p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.heading}>4. Cookies</h2>
-          <p>
-            Unsere Website verwendet funktionale Cookies zur Speicherung Ihrer Spracheinstellung und
-            Cookie-Einwilligung. Diese Cookies sind für den Betrieb der Website technisch notwendig
-            und enthalten keine personenbezogenen Daten.
-          </p>
+        <section className={styles.legal__section}>
+          <h2>4. Rechtsgrundlage</h2>
+          <p>Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung bzw. vorvertragliche Maßnahmen).</p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.heading}>5. Kontakt</h2>
-          <p>
-            Wenn Sie uns per E-Mail kontaktieren, werden die übermittelten Daten zum Zweck der
-            Bearbeitung der Anfrage bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre
-            Einwilligung weiter.
-          </p>
+        <section className={styles.legal__section}>
+          <h2>5. Speicherdauer</h2>
+          <p>Ihre Daten werden nur so lange gespeichert, wie es für die Durchführung des Transfers erforderlich ist, längstens jedoch 7 Jahre (gesetzliche Aufbewahrungspflicht).</p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.heading}>6. Terminbuchung</h2>
-          <p>Bei der Buchung eines Termins erheben wir folgende Daten:</p>
-          <ul>
-            <li>Name</li>
-            <li>Telefonnummer</li>
-            <li>E-Mail-Adresse (optional)</li>
-            <li>Gewünschte Leistung und Uhrzeit</li>
-          </ul>
-          <p>
-            Diese Daten werden ausschließlich für die Terminverwaltung und Kommunikation mit Ihnen
-            verwendet. Sie können jederzeit die Löschung Ihrer Daten beantragen unter{' '}
-            <a href={`mailto:${legal.email}`}>{legal.email}</a>.
-          </p>
+        <section className={styles.legal__section}>
+          <h2>6. Ihre Rechte</h2>
+          <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung sowie Datenübertragbarkeit. Wenden Sie sich hierzu an: info@transfer-gmbh.at</p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.heading}>7. Hosting (Vercel)</h2>
-          <p>
-            Unsere Website wird bei Vercel Inc. (340 Pine Street, Suite 900, San Francisco,
-            CA&nbsp;94104, USA) gehostet. Vercel erhebt und verarbeitet Daten im Rahmen der
-            Bereitstellung der Hosting-Infrastruktur. Weitere Informationen:{' '}
-            <a
-              href="https://vercel.com/legal/privacy-policy"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              https://vercel.com/legal/privacy-policy
-            </a>
-          </p>
-        </section>
-
-        <section className={styles.section}>
-          <h2 className={styles.heading}>8. Ihre Rechte (DSGVO Art.&nbsp;15–22)</h2>
-          <p>
-            Sie haben gegenüber uns folgende Rechte hinsichtlich Ihrer personenbezogenen Daten:
-          </p>
-          <ul>
-            <li>Auskunftsrecht (Art. 15 DSGVO)</li>
-            <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
-            <li>Recht auf Löschung (Art. 17 DSGVO)</li>
-            <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-            <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
-            <li>Widerspruchsrecht (Art. 21 DSGVO)</li>
-          </ul>
-          <p>
-            Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:{' '}
-            <a href={`mailto:${legal.email}`}>{legal.email}</a>
-          </p>
-          <p>
-            Sie haben außerdem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die
-            Verarbeitung Ihrer personenbezogenen Daten zu beschweren.
-          </p>
-        </section>
-
-        <section className={styles.section}>
-          <h2 className={styles.heading}>9. Aktualität und Änderungen</h2>
-          <p>
-            Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den
-            aktuellen rechtlichen Anforderungen entspricht. Stand: 2026.
+        <section className={styles.legal__section}>
+          <h2>7. Beschwerderecht</h2>
+          <p>Sie haben das Recht, bei einer Aufsichtsbehörde Beschwerde einzureichen. In Österreich: Datenschutzbehörde (dsb.gv.at).</p>
+          <p style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: '#5A7290' }}>
+            {/* TODO: vollständige Datenschutzerklärung per Mandant via eRecht24.de ergänzen */}
           </p>
         </section>
       </div>

@@ -460,6 +460,7 @@ model Service {
   duration    Int
   image       String?
   category    String?
+  metadata    Json?
   active      Boolean @default(true)
 
   appointments Appointment[]

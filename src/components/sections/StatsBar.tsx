@@ -11,9 +11,9 @@ export default async function StatsBar({ googleRating }: StatsBarProps) {
   const t = await getTranslations('stats');
 
   const stats: StatItem[] = [
-    { number: '7+',   label: t('yearsLabel')   },
-    { number: '12K+', label: t('clientsLabel') },
-    { number: '4',    label: t('barbersLabel') },
+    { number: '5+',    label: t('yearsLabel')   },
+    { number: '2K+',   label: t('clientsLabel') },
+    { number: '50+',   label: t('barbersLabel') },
     { number: googleRating ? String(googleRating) : '4.9', label: t('googleLabel') },
   ];
 

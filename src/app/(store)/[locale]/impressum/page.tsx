@@ -1,17 +1,8 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { db } from '@/lib/db';
+import { setRequestLocale } from 'next-intl/server';
 import styles from '../legal.module.css';
 
-export const revalidate = 300;
-
-const STORE_SLUG = process.env.STORE_SLUG ?? '';
-
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'Impressum',
-    robots: { index: true, follow: true },
-  };
+export async function generateMetadata() {
+  return { title: 'Impressum | Transfer GmbH', robots: { index: false } };
 }
 
 export default async function ImpressumPage({
@@ -20,88 +11,43 @@ export default async function ImpressumPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (locale !== 'de') notFound();
+  setRequestLocale(locale);
 
-  const store = await db.store.findUnique({ where: { slug: STORE_SLUG } });
-  const legal = store
-    ? await db.legalConfig.findUnique({ where: { storeId: store.id } })
-    : null;
-  if (!legal?.enabled) notFound();
-
-  // TODO: per client, generate via eRecht24.de
   return (
-    <main className={styles.page}>
-      <div className={styles.container}>
-        <h1 className={styles.title}>Impressum</h1>
+    <main className={styles.legal}>
+      <div className={styles.legal__inner}>
+        <h1 className={styles.legal__title}>Impressum</h1>
+        <p className={styles.legal__subtitle}>Angaben gemäß § 5 DDG</p>
 
-        <section className={styles.section}>
-          <h2 className={styles.heading}>Angaben gemäß § 5 DDG</h2>
-          <p>
-            <strong>{legal.companyName}</strong>
-            <br />
-            {legal.street}
-            <br />
-            {legal.zip} {legal.city}
-            <br />
-            {legal.country}
-          </p>
-          <p>
-            {legal.phone && (
-              <>
-                Telefon: {legal.phone}
-                <br />
-              </>
-            )}
-            E-Mail:{' '}
-            <a href={`mailto:${legal.email}`}>{legal.email}</a>
-          </p>
-          {legal.vatId && <p>USt-IdNr.: {legal.vatId}</p>}
+        <section className={styles.legal__section}>
+          <h2>Unternehmensangaben</h2>
+          <p>Transfer GmbH<br />
+          Wiedner Hauptstraße 120<br />
+          1050 Wien, Österreich</p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.heading}>Haftungsausschluss</h2>
-          <h3 className={styles.subheading}>Haftung für Inhalte</h3>
-          <p>
-            Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit,
-            Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
-            Als Diensteanbieter sind wir gemäß § 7 Abs.&nbsp;1 DDG für eigene Inhalte auf diesen
-            Seiten nach den allgemeinen Gesetzen verantwortlich.
-          </p>
-          <h3 className={styles.subheading}>Haftung für Links</h3>
-          <p>
-            Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen
-            Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr
-            übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder
-            Betreiber der Seiten verantwortlich.
-          </p>
+        <section className={styles.legal__section}>
+          <h2>Kontakt</h2>
+          <p>Telefon: +43 664 000 00 00<br />
+          E-Mail: info@transfer-gmbh.at</p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.heading}>Urheberrecht</h2>
-          <p>
-            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen
-            dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art
-            der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen
-            Zustimmung des jeweiligen Autors bzw.&nbsp;Erstellers.
-          </p>
+        <section className={styles.legal__section}>
+          <h2>Gewerbliche Tätigkeit</h2>
+          <p>Gewerblicher Personentransport (Taxi / Mietwagen mit Fahrer)<br />
+          Gewerbeberechtigung: Bezirkshauptmannschaft Wien, Österreich</p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.heading}>Online-Streitbeilegung</h2>
-          <p>
-            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS)
-            bereit:{' '}
-            <a
-              href="https://ec.europa.eu/consumers/odr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              https://ec.europa.eu/consumers/odr
-            </a>
-          </p>
-          <p>
-            Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
-            Verbraucherschlichtungsstelle teilzunehmen.
+        <section className={styles.legal__section}>
+          <h2>UID-Nummer</h2>
+          <p>ATU00000000 {/* TODO: per client */}</p>
+        </section>
+
+        <section className={styles.legal__section}>
+          <h2>Haftungsausschluss</h2>
+          <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+          <p style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: '#5A7290' }}>
+            {/* TODO: vollständiges Impressum per Mandant via eRecht24.de ergänzen */}
           </p>
         </section>
       </div>

@@ -8,14 +8,12 @@ import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
 export default function Header({ logoUrl, whatsappBookingLink = '#' }: { logoUrl?: string; whatsappBookingLink?: string }) {
   const locale = useLocale();
   const tHeader = useTranslations('Header');
-  const tTestimonials = useTranslations('testimonials');
-
   const navLinks = [
-    { href: `/${locale}/#sluzby`,   label: tHeader('servicesServices') },
-    { href: `/${locale}/#galeria`,  label: tHeader('servicesGallery') },
-    { href: `/${locale}/#tim`,      label: tHeader('servicesTeam') },
-    { href: `/${locale}/#recenzie`, label: tTestimonials('pageTitle') },
-    { href: `/${locale}/#kontakt`,  label: tHeader('servicesContact') },
+    { href: `/${locale}/#strecken`,   label: tHeader('transferStrecken') },
+    { href: `/${locale}/#fuhrpark`,   label: tHeader('transferFuhrpark') },
+    { href: `/${locale}/#leistungen`, label: tHeader('transferLeistungen') },
+    { href: `/${locale}/#galerie`,    label: tHeader('transferGalerie') },
+    { href: `/${locale}/#kontakt`,    label: tHeader('transferKontakt') },
   ];
 
   const [scrolled, setScrolled] = useState(false);
@@ -59,7 +57,7 @@ export default function Header({ logoUrl, whatsappBookingLink = '#' }: { logoUrl
             /* eslint-disable-next-line @next/next/no-img-element */
             <img src={logoUrl} alt="Logo" className="header__logo-img" />
           ) : (
-            <>Kate <span className="header__logo-span">Barber Studio</span></>
+            <>Transfer <span className="header__logo-span">GmbH</span></>
           )}
         </Link>
 
@@ -69,8 +67,8 @@ export default function Header({ logoUrl, whatsappBookingLink = '#' }: { logoUrl
               {link.label}
             </a>
           ))}
-          <a href={`/${locale}/#rezervacia`} className="header__btn-reserve">
-            Rezervácia
+          <a href={`/${locale}/#angebot`} className="header__btn-reserve">
+            {tHeader('transferBuchen')}
           </a>
           <a
             href={whatsappBookingLink}
@@ -104,11 +102,11 @@ export default function Header({ logoUrl, whatsappBookingLink = '#' }: { logoUrl
               </a>
             ))}
             <a
-              href={`/${locale}/#rezervacia`}
+              href={`/${locale}/#angebot`}
               className="header__mobile-btn-reserve"
               onClick={() => setMenuOpen(false)}
             >
-              Rezervácia
+              {tHeader('transferBuchen')}
             </a>
             <a
               href={whatsappBookingLink}
