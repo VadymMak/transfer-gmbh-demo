@@ -194,17 +194,18 @@
     "servicesGallery": "Galéria",
     "servicesBookNow": "Rezervovať",
     "servicesAdmin": "Admin",
-    "servicesTagline": "Prémiový barber studio v {city}.",
+    "servicesTagline": "Prémiový letiskový transfer Viedeň ⇄ Bratislava.",
     "allRightsReserved": "© {year} {name}. Všetky práva vyhradené.",
     "privacyPolicy": "Ochrana súkromia",
     "termsOfService": "Obchodné podmienky",
-    "navServices": "Služby & Ceny",
+    "navServices": "Trasy & Ceny",
     "navGallery": "Galéria",
-    "navTeam": "Náš tím",
-    "navReviews": "Recenzie",
-    "navAbout": "O nás",
-    "navBooking": "Rezervácia",
-    "contactTitle": "Kontakt"
+    "navTeam": "Vozový park",
+    "navReviews": "Kontakt",
+    "navAbout": "Služby",
+    "navBooking": "Dopyt",
+    "contactTitle": "Kontakt",
+    "available247": "Dostupní 24/7"
   },
   "tags": {
     "popularQueries": "Obľúbené vyhľadávania:"
@@ -380,7 +381,12 @@
     "viewMenu": "Trasy & Ceny",
     "todaysSpecial": "PEVNÁ CENA",
     "orderNow": "Objednať",
-    "trustLine": "licencovaní · pevné ceny · 24/7"
+    "trustLine": "licencovaní · pevné ceny · 24/7",
+    "chip1": "Letiskový transfer",
+    "chip2": "Firemné jazdy",
+    "chip3": "Akcie & Podujatia",
+    "chip4": "Dlhé trasy",
+    "priceAnchor": "Od €45 za transfer"
   },
   "menuCategories": {
     "tagline": "— NAŠE MENU —",

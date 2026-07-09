@@ -4,7 +4,6 @@ import type { StoreConfig, WorkingHours, DayHours } from '@/lib/store-config';
 interface FooterProps {
   config: StoreConfig;
   locale?: string;
-  legalEnabled?: boolean;
 }
 
 const DAY_ORDER = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
@@ -34,10 +33,9 @@ function formatFooterHours(
   return result;
 }
 
-export default async function Footer({ config, locale, legalEnabled }: FooterProps) {
+export default async function Footer({ config, locale }: FooterProps) {
   const { name, presence, whatsappLinks } = config;
   const currentYear = new Date().getFullYear();
-  const showLegal = locale === 'de' && legalEnabled;
 
   const [tFooter, tDays] = await Promise.all([
     getTranslations('footer'),
@@ -123,7 +121,7 @@ export default async function Footer({ config, locale, legalEnabled }: FooterPro
               ))}
             </ul>
           ) : (
-            <p>—</p>
+            <p className="footer__available247">{tFooter('available247')}</p>
           )}
         </div>
 
@@ -158,17 +156,9 @@ export default async function Footer({ config, locale, legalEnabled }: FooterPro
       <div className="footer__bottom">
         <p>{tFooter('allRightsReserved', { year: currentYear, name })}</p>
         <p className="footer__bottom-links">
-          <a href="#">{tFooter('privacyPolicy')}</a>
+          <a href={`/${locale}/impressum`}>Impressum</a>
           <span>·</span>
-          <a href="#">{tFooter('termsOfService')}</a>
-          {showLegal && (
-            <>
-              <span>·</span>
-              <a href={`/${locale}/impressum`}>Impressum</a>
-              <span>·</span>
-              <a href={`/${locale}/datenschutz`}>Datenschutz</a>
-            </>
-          )}
+          <a href={`/${locale}/datenschutz`}>{tFooter('privacyPolicy')}</a>
         </p>
       </div>
     </footer>

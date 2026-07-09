@@ -194,17 +194,18 @@
     "servicesGallery": "Galerie",
     "servicesBookNow": "Jetzt buchen",
     "servicesAdmin": "Admin",
-    "servicesTagline": "Premium-Barbershop in {city}.",
+    "servicesTagline": "Premium-Flughafentransfer Wien ⇄ Bratislava.",
     "allRightsReserved": "© {year} {name}. Alle Rechte vorbehalten.",
     "privacyPolicy": "Datenschutzerklärung",
     "termsOfService": "Impressum",
-    "navServices": "Leistungen & Preise",
+    "navServices": "Strecken & Preise",
     "navGallery": "Galerie",
-    "navTeam": "Unser Team",
-    "navReviews": "Bewertungen",
-    "navAbout": "Über uns",
-    "navBooking": "Termin buchen",
-    "contactTitle": "Kontakt"
+    "navTeam": "Fuhrpark",
+    "navReviews": "Kontakt",
+    "navAbout": "Leistungen",
+    "navBooking": "Anfrage",
+    "contactTitle": "Kontakt",
+    "available247": "24/7 erreichbar"
   },
   "tags": {
     "popularQueries": "Beliebte Suchanfragen:"
@@ -380,7 +381,12 @@
     "viewMenu": "Strecken & Preise",
     "todaysSpecial": "FESTPREIS",
     "orderNow": "Jetzt anfragen",
-    "trustLine": "lizenziert · Festpreis · 24/7"
+    "trustLine": "lizenziert · Festpreis · 24/7",
+    "chip1": "Flughafentransfer",
+    "chip2": "Businessfahrt",
+    "chip3": "Events",
+    "chip4": "Langstrecke",
+    "priceAnchor": "Ab €45 pro Transfer"
   },
   "menuCategories": {
     "tagline": "— UNSERE SPEISEKARTE —",

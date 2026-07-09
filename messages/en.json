@@ -194,17 +194,18 @@
     "servicesGallery": "Gallery",
     "servicesBookNow": "Book Now",
     "servicesAdmin": "Admin",
-    "servicesTagline": "Premium barber studio in {city}.",
+    "servicesTagline": "Premium airport transfer Vienna ⇄ Bratislava.",
     "allRightsReserved": "© {year} {name}. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
-    "navServices": "Services & Pricing",
+    "navServices": "Routes & Prices",
     "navGallery": "Gallery",
-    "navTeam": "Our Team",
-    "navReviews": "Reviews",
-    "navAbout": "About Us",
-    "navBooking": "Book Now",
-    "contactTitle": "Contact"
+    "navTeam": "Fleet",
+    "navReviews": "Contact",
+    "navAbout": "Services",
+    "navBooking": "Request",
+    "contactTitle": "Contact",
+    "available247": "Available 24/7"
   },
   "tags": {
     "popularQueries": "Popular searches:"
@@ -380,7 +381,12 @@
     "viewMenu": "Routes & Prices",
     "todaysSpecial": "FIXED PRICE",
     "orderNow": "Book Now",
-    "trustLine": "licensed · fixed price · 24/7"
+    "trustLine": "licensed · fixed price · 24/7",
+    "chip1": "Airport Transfer",
+    "chip2": "Business Travel",
+    "chip3": "Events",
+    "chip4": "Long Distance",
+    "priceAnchor": "From €45 per transfer"
   },
   "menuCategories": {
     "tagline": "— OUR MENU —",

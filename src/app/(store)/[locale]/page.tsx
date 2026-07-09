@@ -76,7 +76,7 @@ export default async function HomePage({
       <GallerySection images={galleryImages} layout={config.galleryLayout ?? undefined} />
       <TestimonialsSection testimonials={dbTestimonials.map((t) => ({
         id: t.id,
-        name: t.customer?.name ?? 'Kunde',
+        name: t.authorName ?? t.customer?.name ?? 'Anonym',
         content: t.text,
         rating: t.rating,
         createdAt: t.createdAt.toISOString(),

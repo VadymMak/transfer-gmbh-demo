@@ -194,17 +194,18 @@
     "servicesGallery": "Galerie",
     "servicesBookNow": "Rezervovat",
     "servicesAdmin": "Admin",
-    "servicesTagline": "Prémiový barbershop v {city}.",
+    "servicesTagline": "Prémiový letištní transfer Vídeň ⇄ Bratislava.",
     "allRightsReserved": "© {year} {name}. Všechna práva vyhrazena.",
     "privacyPolicy": "Ochrana soukromí",
     "termsOfService": "Obchodní podmínky",
-    "navServices": "Služby & Ceny",
+    "navServices": "Trasy & Ceny",
     "navGallery": "Galerie",
-    "navTeam": "Náš tým",
-    "navReviews": "Recenze",
-    "navAbout": "O nás",
-    "navBooking": "Rezervovat",
-    "contactTitle": "Kontakt"
+    "navTeam": "Vozový park",
+    "navReviews": "Kontakt",
+    "navAbout": "Služby",
+    "navBooking": "Poptávka",
+    "contactTitle": "Kontakt",
+    "available247": "Dostupní 24/7"
   },
   "tags": {
     "popularQueries": "Oblíbené dotazy:"
@@ -380,7 +381,12 @@
     "viewMenu": "Trasy & Ceny",
     "todaysSpecial": "PEVNÁ CENA",
     "orderNow": "Objednat",
-    "trustLine": "licencováni · pevné ceny · 24/7"
+    "trustLine": "licencováni · pevné ceny · 24/7",
+    "chip1": "Letištní transfer",
+    "chip2": "Firemní jízdy",
+    "chip3": "Akce & Události",
+    "chip4": "Dlouhé trasy",
+    "priceAnchor": "Od €45 za transfer"
   },
   "menuCategories": {
     "tagline": "— NAŠE MENU —",

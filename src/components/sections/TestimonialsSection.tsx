@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getTranslations, getLocale } from 'next-intl/server';
 import TestimonialCard from '@/components/ui/TestimonialCard';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import GoldDivider from '@/components/ui/GoldDivider';
@@ -17,38 +18,43 @@ interface TestimonialsSectionProps {
   testimonials: TestimonialItem[];
 }
 
-export default function TestimonialsSection({ testimonials }: TestimonialsSectionProps) {
+export default async function TestimonialsSection({ testimonials }: TestimonialsSectionProps) {
   if (testimonials.length === 0) return null;
 
+  const [t, locale] = await Promise.all([
+    getTranslations('testimonials'),
+    getLocale(),
+  ]);
+
   return (
-    <section id="recenzie" className="testimonials">
+    <section id="bewertungen" className="testimonials">
       <ScrollReveal direction="up" className="section-header">
-        <p className="section-label">Recenzie</p>
-        <h2 className="section-title">Čo hovoria naši klienti</h2>
+        <p className="section-label">{t('sectionLabel')}</p>
+        <h2 className="section-title">{t('sectionTitle')}</h2>
         <GoldDivider />
       </ScrollReveal>
 
       <div className="testimonials__grid">
-        {testimonials.map((t, i) => (
-          <ScrollReveal key={t.id} direction="up" delay={i * 120}>
+        {testimonials.map((item, i) => (
+          <ScrollReveal key={item.id} direction="up" delay={i * 120}>
             <TestimonialCard
-              name={t.name}
-              content={t.content}
-              rating={t.rating}
-              createdAt={t.createdAt}
-              adminReply={t.adminReply}
-              adminReplyAt={t.adminReplyAt}
+              name={item.name}
+              content={item.content}
+              rating={item.rating}
+              createdAt={item.createdAt}
+              adminReply={item.adminReply}
+              adminReplyAt={item.adminReplyAt}
             />
           </ScrollReveal>
         ))}
       </div>
 
       <div className="testimonials__footer">
-        <Link href="/sk/testimonials" className="btn-outline">
-          Zobraziť všetky recenzie →
+        <Link href={`/${locale}/testimonials`} className="btn-outline">
+          {t('viewAll')} →
         </Link>
-        <Link href="/sk/testimonials/submit" className="btn-primary">
-          Zanechať recenziu
+        <Link href={`/${locale}/testimonials/submit`} className="btn-primary">
+          {t('writeReview')}
         </Link>
       </div>
     </section>
