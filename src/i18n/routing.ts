@@ -1,14 +1,12 @@
 import { defineRouting } from 'next-intl/routing';
 
 /**
- * The single source of truth for locale routing — shared by the middleware,
- * the navigation helpers (`src/i18n/navigation.ts`) and the request config.
- * All six locales are always routable; `REGION_BUNDLE` (see `src/config.ts`)
- * only influences a UI language switcher, never which routes exist.
+ * EU-only routing for Transfer GmbH.
+ * Only de/sk/cs/en are served — requests for other locales are redirected to /de by middleware.
  */
 export const routing = defineRouting({
-  locales: ['en', 'uk', 'ru', 'de', 'sk', 'cs', 'pl'],
-  defaultLocale: 'en',
+  locales: ['de', 'sk', 'cs', 'en'],
+  defaultLocale: 'de',
   localePrefix: 'always',
 });
 
