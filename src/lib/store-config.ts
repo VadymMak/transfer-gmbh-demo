@@ -1,6 +1,6 @@
 import { cache } from 'react';
 import { db } from '@/lib/db';
-import { DEFAULT_THEME, type ThemeConfig } from '@/lib/theme';
+import { mergeTheme, type ThemeConfig } from '@/lib/theme';
 import { getVerticalConfig, type VerticalConfig } from '@/lib/verticals';
 
 const STORE_SLUG = process.env.STORE_SLUG ?? '';
@@ -104,10 +104,7 @@ export const getStoreConfig = cache(async (): Promise<StoreConfig> => {
   });
 
   const dbTheme = store.themeConfig as Partial<ThemeConfig> | null;
-  const theme: ThemeConfig = {
-    colors: { ...DEFAULT_THEME.colors, ...(dbTheme?.colors ?? {}) },
-    layout: { ...DEFAULT_THEME.layout, ...(dbTheme?.layout ?? {}) },
-  };
+  const theme = mergeTheme(dbTheme);
 
   const mode = store.primaryMode as StoreMode;
   const whatsappNumber = store.whatsappPhone ?? store.phone;

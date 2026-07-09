@@ -16,10 +16,45 @@ const db = new PrismaClient({ adapter });
 async function main() {
   console.log('Seeding Transfer GmbH...');
 
+  // Navy theme for transport/business verticals
+  const navyTheme = {
+    colors: {
+      bg:           '#060E18',
+      primary:      '#C9A347',
+      primaryDark:  '#A8893E',
+      primaryLight: '#E0B85A',
+      text:         '#FFFFFF',
+      textSecondary:'#B8C4D4',
+      textMuted:    '#506478',
+      border:       'rgba(201, 163, 71, 0.18)',
+      bgSubtle:     '#0A1828',
+      success:      '#4ade80',
+      error:        '#ef4444',
+      contrast:     '#FFFFFF',
+      overlay:      '#000000',
+      overlayAlpha: 'rgba(0,0,0,0.65)',
+      headerBg:     'rgba(6,14,24,0.95)',
+      bgDark:       '#020D14',
+      warning:      '#fbbf24',
+      successLight: 'rgba(74,222,128,0.15)',
+      errorLight:   'rgba(239,68,68,0.15)',
+      infoLight:    'rgba(201,163,71,0.12)',
+      surface:      '#0A1828',
+      bgAlt:        '#0A1828',
+      bgCard:       '#0E2040',
+    },
+    layout: {
+      heroType:     'split',
+      cardStyle:    'border',
+      navPosition:  'top',
+      borderRadius: 'sharp',
+    },
+  };
+
   // 1. Store
   const store = await db.store.upsert({
     where: { slug: 'transfer-gmbh' },
-    update: {},
+    update: { themeConfig: navyTheme },
     create: {
       slug: 'transfer-gmbh',
       name: 'Transfer GmbH',
@@ -38,6 +73,7 @@ async function main() {
       googleRating: 4.9,
       mapLat: 48.2081743,
       mapLng: 16.3738189,
+      themeConfig: navyTheme,
     },
   });
 
