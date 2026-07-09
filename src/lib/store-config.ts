@@ -26,6 +26,7 @@ export interface StorePresence {
   postalCode?: string;
   city?: string;
   openingHours?: WorkingHours;
+  alwaysOpen: boolean;
   phone?: string;
   whatsapp?: string;
   email?: string;
@@ -86,6 +87,7 @@ export const getStoreConfig = cache(async (): Promise<StoreConfig> => {
       postalCode: true,
       city: true,
       openingHours: true,
+      alwaysOpen: true,
       logoUrl: true,
       ogImageUrl: true,
       aboutImage: true,
@@ -118,6 +120,7 @@ export const getStoreConfig = cache(async (): Promise<StoreConfig> => {
     postalCode: store.postalCode ?? undefined,
     city: store.city ?? undefined,
     openingHours: parseOpeningHours(store.openingHours),
+    alwaysOpen: store.alwaysOpen ?? false,
     phone: store.phone ?? undefined,
     whatsapp: store.whatsappPhone ?? undefined,
     email: store.email ?? undefined,

@@ -188,6 +188,7 @@
     "aboutDescServices": "Professional barbershop and hair salon. Men's haircuts, beard grooming and styling at the highest level.",
     "servicesNavTitle": "Navigation",
     "servicesHoursTitle": "Working Hours",
+    "hours24_7": "24/7 · Around the clock",
     "servicesClosed": "Closed",
     "servicesServices": "Services",
     "servicesTeam": "Team",
@@ -675,6 +676,7 @@
     "contactLabel": "Contact",
     "openingHoursLabel": "Opening Hours",
     "available247": "24/7 · Around the clock",
+    "hours24_7": "24/7 · Around the clock",
     "writeToUs": "Message Us",
     "mapTitle": "Map {city}"
   },

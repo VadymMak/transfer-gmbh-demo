@@ -50,6 +50,7 @@ export default async function Footer({ config, locale }: FooterProps) {
 
   const phoneHref = presence.phone ? `tel:${presence.phone.replace(/\s/g, '')}` : undefined;
   const emailHref = presence.email ? `mailto:${presence.email}` : undefined;
+  const alwaysOpen = presence.alwaysOpen ?? false;
   const hoursRows = presence.openingHours
     ? formatFooterHours(presence.openingHours, dayNames, closedLabel)
     : [];
@@ -109,7 +110,9 @@ export default async function Footer({ config, locale }: FooterProps) {
         {/* Col 3 — Hours */}
         <div className="footer__col">
           <h4 className="footer__heading">{tFooter('servicesHoursTitle')}</h4>
-          {hoursRows.length > 0 ? (
+          {alwaysOpen ? (
+            <p className="footer__available247">{tFooter('hours24_7')}</p>
+          ) : hoursRows.length > 0 ? (
             <ul className="footer__hours">
               {hoursRows.map((row) => (
                 <li key={row.label}>

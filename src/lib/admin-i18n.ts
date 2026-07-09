@@ -141,6 +141,7 @@ export interface AdminTranslations {
     lngLabel: string;
     googleRatingLabel: string;
     /* Working hours */
+    alwaysOpenLabel: string;
     workingHoursLabel: string;
     closedLabel: string;
     days: {
@@ -680,6 +681,7 @@ const SK: AdminTranslations = {
     latLabel:           'Zemepisná šírka (lat)',
     lngLabel:           'Zemepisná dĺžka (lng)',
     googleRatingLabel:  'Google hodnotenie',
+    alwaysOpenLabel:    '24/7 – Nepretržite otvorené',
     workingHoursLabel:  'Pracovné hodiny',
     closedLabel:        'Zatvorené',
     days: {
@@ -1217,6 +1219,7 @@ const EN: AdminTranslations = {
     latLabel:           'Latitude (lat)',
     lngLabel:           'Longitude (lng)',
     googleRatingLabel:  'Google rating',
+    alwaysOpenLabel:    '24/7 – Open round the clock',
     workingHoursLabel:  'Working hours',
     closedLabel:        'Closed',
     days: {
@@ -1754,6 +1757,7 @@ const CS: AdminTranslations = {
     latLabel:           'Zeměpisná šířka (lat)',
     lngLabel:           'Zeměpisná délka (lng)',
     googleRatingLabel:  'Google hodnocení',
+    alwaysOpenLabel:    '24/7 – Nepřetržitě otevřeno',
     workingHoursLabel:  'Pracovní hodiny',
     closedLabel:        'Zavřeno',
     days: {
@@ -2291,6 +2295,7 @@ const DE: AdminTranslations = {
     latLabel:           'Breitengrad (lat)',
     lngLabel:           'Längengrad (lng)',
     googleRatingLabel:  'Google-Bewertung',
+    alwaysOpenLabel:    '24/7 – Durchgehend geöffnet',
     workingHoursLabel:  'Öffnungszeiten',
     closedLabel:        'Geschlossen',
     days: {
@@ -2828,6 +2833,7 @@ const UK: AdminTranslations = {
     latLabel:           'Широта (lat)',
     lngLabel:           'Довгота (lng)',
     googleRatingLabel:  'Рейтинг Google',
+    alwaysOpenLabel:    '24/7 – Цілодобово відкрито',
     workingHoursLabel:  'Робочі години',
     closedLabel:        'Зачинено',
     days: {
@@ -3365,6 +3371,7 @@ const RU: AdminTranslations = {
     latLabel:           'Широта (lat)',
     lngLabel:           'Долгота (lng)',
     googleRatingLabel:  'Рейтинг Google',
+    alwaysOpenLabel:    '24/7 – Круглосуточно открыто',
     workingHoursLabel:  'Рабочие часы',
     closedLabel:        'Закрыто',
     days: {
@@ -3902,6 +3909,7 @@ const PL: AdminTranslations = {
     latLabel:           'Szerokość geograficzna (lat)',
     lngLabel:           'Długość geograficzna (lng)',
     googleRatingLabel:  'Ocena Google',
+    alwaysOpenLabel:    '24/7 – Całodobowo otwarte',
     workingHoursLabel:  'Godziny pracy',
     closedLabel:        'Zamknięte',
     days: {

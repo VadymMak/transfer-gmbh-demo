@@ -22,6 +22,7 @@ model Store {
   postalCode   String?
   city         String?
   openingHours String?
+  alwaysOpen   Boolean  @default(false)
   logoUrl      String?
   aboutImage   String?
   ogImageUrl   String?

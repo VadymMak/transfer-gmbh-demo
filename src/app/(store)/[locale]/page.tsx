@@ -93,6 +93,7 @@ export default async function HomePage({
         mapLat={presence.mapCoords?.lat}
         mapLng={presence.mapCoords?.lng}
         workingHours={presence.openingHours}
+        alwaysOpen={presence.alwaysOpen}
         whatsappLocationLink={whatsappLinks.location}
       />
       <WhatsAppButton href={whatsappLinks.general} />

@@ -82,6 +82,7 @@ export default function AdminSettingsPage() {
 
   // Working hours — parsed from openingHours JSON string
   const [hours, setHours] = useState<HoursMap>(DEFAULT_HOURS);
+  const [alwaysOpen, setAlwaysOpen] = useState(false);
 
   // Logo
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
@@ -110,6 +111,7 @@ export default function AdminSettingsPage() {
             mapLng: s.mapLng != null ? String(s.mapLng) : '',
           }));
           setHours(parseHours(s.openingHours));
+          setAlwaysOpen((s.alwaysOpen as boolean) ?? false);
           setLogoUrl((s.logoUrl as string | null) ?? null);
           setAboutImageUrl((s.aboutImage as string | null) ?? null);
         }
@@ -147,6 +149,7 @@ export default function AdminSettingsPage() {
           address: store.address || null,
           city: store.city || null,
           openingHours: JSON.stringify(hours),
+          alwaysOpen,
           mapLat: store.mapLat ? parseFloat(store.mapLat) : null,
           mapLng: store.mapLng ? parseFloat(store.mapLng) : null,
         }),
@@ -371,13 +374,23 @@ export default function AdminSettingsPage() {
                 <input className={styles.input} value={store.city} onChange={(e) => sStore('city', e.target.value)} placeholder="..." />
               </Field>
 
+              {/* ── 24/7 toggle ─────────────────────────────────────── */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '1.5rem', padding: '0.75rem 1rem', background: 'var(--admin-bg-subtle)', border: '1px solid var(--admin-border)', borderRadius: '8px' }}>
+                <Toggle checked={alwaysOpen} onChange={setAlwaysOpen} />
+                <span style={{ fontSize: '0.9rem', color: 'var(--admin-text)', userSelect: 'none' }}>
+                  {tr.settings.alwaysOpenLabel}
+                </span>
+              </div>
+
               {/* ── Working hours editor ─────────────────────────────── */}
-              <div style={{ marginTop: '1.5rem', marginBottom: '0.5rem' }}>
+              {!alwaysOpen && (
+              <div style={{ marginTop: '0.75rem', marginBottom: '0.5rem' }}>
                 <p style={{ color: 'var(--admin-text-muted)', fontSize: '0.78rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
                   {tr.settings.workingHoursLabel}
                 </p>
                 <WorkingHoursEditor value={hours} onChange={setHours} />
               </div>
+              )}
 
               <div className={styles.grid2} style={{ marginTop: '1rem' }}>
                 <Field label={tr.settings.latLabel}>

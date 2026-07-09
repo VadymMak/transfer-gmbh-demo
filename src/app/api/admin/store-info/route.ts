@@ -22,6 +22,7 @@ export async function GET() {
       address: true,
       city: true,
       openingHours: true,
+      alwaysOpen: true,
       logoUrl: true,
       aboutImage: true,
       phone: true,
@@ -52,7 +53,7 @@ export async function PUT(request: Request) {
   const body = await request.json() as Record<string, unknown>;
 
   const allowed = ['name', 'description', 'primaryMode', 'address', 'city',
-                   'openingHours', 'phone', 'email', 'mapLat', 'mapLng'] as const;
+                   'openingHours', 'phone', 'email', 'mapLat', 'mapLng', 'alwaysOpen'] as const;
 
   const data: Record<string, unknown> = {};
   for (const key of allowed) {
@@ -63,6 +64,10 @@ export async function PUT(request: Request) {
     }
     if ((key === 'mapLat' || key === 'mapLng') && body[key] != null) {
       data[key] = parseFloat(String(body[key]));
+      continue;
+    }
+    if (key === 'alwaysOpen') {
+      data[key] = typeof body[key] === 'boolean' ? body[key] : false;
       continue;
     }
     data[key] = body[key] ?? null;

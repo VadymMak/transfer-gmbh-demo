@@ -181,6 +181,7 @@
     "aboutDescServices": "Profesjonalny barbershop i salon fryzjerski. Strzyżenia męskie, pielęgnacja brody i stylizacja na najwyższym poziomie.",
     "servicesNavTitle": "Nawigacja",
     "servicesHoursTitle": "Godziny pracy",
+    "hours24_7": "24/7 · Całodobowo",
     "servicesClosed": "Zamknięte",
     "servicesServices": "Usługi",
     "servicesTeam": "Zespół",
@@ -670,6 +671,7 @@
     "addressLabel": "Adres",
     "contactLabel": "Kontakt",
     "openingHoursLabel": "Godziny otwarcia",
+    "hours24_7": "24/7 · Całodobowo",
     "writeToUs": "Napisz do nas",
     "mapTitle": "Mapa {city}"
   },

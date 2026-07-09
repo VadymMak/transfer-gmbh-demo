@@ -181,6 +181,7 @@
     "aboutDescServices": "Профессиональный барбершоп и парикмахерская. Мужские стрижки, уход за бородой и стайлинг высочайшего уровня.",
     "servicesNavTitle": "Навигация",
     "servicesHoursTitle": "Часы работы",
+    "hours24_7": "24/7 · Круглосуточно",
     "servicesClosed": "Закрыто",
     "servicesServices": "Услуги",
     "servicesTeam": "Команда",
@@ -670,6 +671,7 @@
     "addressLabel": "Адрес",
     "contactLabel": "Контакт",
     "openingHoursLabel": "Часы работы",
+    "hours24_7": "24/7 · Круглосуточно",
     "writeToUs": "Написать нам",
     "mapTitle": "Карта {city}"
   },

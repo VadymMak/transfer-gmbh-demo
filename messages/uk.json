@@ -181,6 +181,7 @@
     "aboutDescServices": "Професійний барбершоп та перукарня. Чоловічі стрижки, догляд за бородою та стайлінг найвищого рівня.",
     "servicesNavTitle": "Навігація",
     "servicesHoursTitle": "Години роботи",
+    "hours24_7": "24/7 · Цілодобово",
     "servicesClosed": "Зачинено",
     "servicesServices": "Послуги",
     "servicesTeam": "Команда",
@@ -670,6 +671,7 @@
     "addressLabel": "Адреса",
     "contactLabel": "Контакт",
     "openingHoursLabel": "Години роботи",
+    "hours24_7": "24/7 · Цілодобово",
     "writeToUs": "Написати нам",
     "mapTitle": "Карта {city}"
   },

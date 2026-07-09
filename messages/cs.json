@@ -188,6 +188,7 @@
     "aboutDescServices": "Profesionální barbershop a kadeřnictví. Pánské střihy, holení a styling na nejvyšší úrovni.",
     "servicesNavTitle": "Navigace",
     "servicesHoursTitle": "Pracovní doba",
+    "hours24_7": "24/7 · Nonstop",
     "servicesClosed": "Zavřeno",
     "servicesServices": "Služby",
     "servicesTeam": "Tým",
@@ -675,6 +676,7 @@
     "contactLabel": "Kontakt",
     "openingHoursLabel": "Otevírací doba",
     "available247": "24/7 · Nonstop",
+    "hours24_7": "24/7 · Nonstop",
     "writeToUs": "Napište nám",
     "mapTitle": "Mapa {city}"
   },

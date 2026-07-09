@@ -188,6 +188,7 @@
     "aboutDescServices": "Profesionálna barbershop a vlasový salón. Pánske strihy, bradenie a styling na najvyššej úrovni.",
     "servicesNavTitle": "Navigácia",
     "servicesHoursTitle": "Pracovná doba",
+    "hours24_7": "24/7 · Nonstop",
     "servicesClosed": "Zatvorené",
     "servicesServices": "Služby",
     "servicesTeam": "Tím",
@@ -675,6 +676,7 @@
     "contactLabel": "Kontakt",
     "openingHoursLabel": "Otváracie hodiny",
     "available247": "24/7 · Nonstop",
+    "hours24_7": "24/7 · Nonstop",
     "writeToUs": "Napíšte nám",
     "mapTitle": "Mapa {city}"
   },

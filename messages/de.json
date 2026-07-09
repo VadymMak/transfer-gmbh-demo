@@ -188,6 +188,7 @@
     "aboutDescServices": "Professioneller Barbershop und Friseursalon. Herrenhaarschnitte, Bartpflege und Styling auf höchstem Niveau.",
     "servicesNavTitle": "Navigation",
     "servicesHoursTitle": "Öffnungszeiten",
+    "hours24_7": "24/7 · Rund um die Uhr",
     "servicesClosed": "Geschlossen",
     "servicesServices": "Leistungen",
     "servicesTeam": "Team",
@@ -675,6 +676,7 @@
     "contactLabel": "Kontakt",
     "openingHoursLabel": "Öffnungszeiten",
     "available247": "24/7 · Rund um die Uhr",
+    "hours24_7": "24/7 · Rund um die Uhr",
     "writeToUs": "Schreiben Sie uns",
     "mapTitle": "Karte {city}"
   },

@@ -55,6 +55,7 @@ interface ContactSectionProps {
   mapLat?: number | null;
   mapLng?: number | null;
   workingHours?: WorkingHours;
+  alwaysOpen?: boolean;
   whatsappLocationLink?: string;
 }
 
@@ -66,6 +67,7 @@ export default async function ContactSection({
   mapLat,
   mapLng,
   workingHours,
+  alwaysOpen = false,
   whatsappLocationLink,
 }: ContactSectionProps) {
   const tContact = await getTranslations('contact');
@@ -122,26 +124,28 @@ export default async function ContactSection({
               </div>
             )}
 
-            <div>
-              <p className="contact-item-label">{tContact('openingHoursLabel')}</p>
-              {hoursData.length > 0 ? (
-                <div className="contact-hours-grid">
-                  {hoursData.map((row, idx) => (
-                    <Fragment key={idx}>
-                      <span className="contact-hours-day">{row.label}</span>
-                      <span
-                        className="contact-hours-time"
-                        style={{ fontWeight: row.hours === closedLabel ? 400 : undefined }}
-                      >
-                        {row.hours}
-                      </span>
-                    </Fragment>
-                  ))}
-                </div>
-              ) : (
-                <p className="contact-item-value">{tContact('available247')}</p>
-              )}
-            </div>
+            {(alwaysOpen || hoursData.length > 0) && (
+              <div>
+                <p className="contact-item-label">{tContact('openingHoursLabel')}</p>
+                {alwaysOpen ? (
+                  <p className="contact-item-value">{tContact('hours24_7')}</p>
+                ) : (
+                  <div className="contact-hours-grid">
+                    {hoursData.map((row, idx) => (
+                      <Fragment key={idx}>
+                        <span className="contact-hours-day">{row.label}</span>
+                        <span
+                          className="contact-hours-time"
+                          style={{ fontWeight: row.hours === closedLabel ? 400 : undefined }}
+                        >
+                          {row.hours}
+                        </span>
+                      </Fragment>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
 
             {whatsappLocationLink && whatsappLocationLink !== '#' && (
               <a
