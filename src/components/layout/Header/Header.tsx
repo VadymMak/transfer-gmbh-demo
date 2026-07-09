@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher/LanguageSwitcher';
 
 export default function Header({ logoUrl, whatsappBookingLink = '#' }: { logoUrl?: string; whatsappBookingLink?: string }) {
   const locale = useLocale();
@@ -67,6 +68,7 @@ export default function Header({ logoUrl, whatsappBookingLink = '#' }: { logoUrl
               {link.label}
             </a>
           ))}
+          <LanguageSwitcher variant="dropdown" />
           <a href={`/${locale}/#angebot`} className="header__btn-reserve">
             {tHeader('transferBuchen')}
           </a>
@@ -118,6 +120,9 @@ export default function Header({ logoUrl, whatsappBookingLink = '#' }: { logoUrl
               <WhatsAppIcon size={16} />
               WhatsApp
             </a>
+            <div className="header__mobile-lang">
+              <LanguageSwitcher variant="inline" />
+            </div>
           </nav>
         )}
       </div>
