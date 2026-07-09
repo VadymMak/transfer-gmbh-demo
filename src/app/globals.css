@@ -381,7 +381,8 @@ body::after {
   background: var(--color-bg);
   overflow: hidden;
   min-height: 100vh;
-  height: 100vh;
+  /* no fixed height — hero grows with content so longer translations
+     (e.g. auto-translated RU) push content down instead of overlapping/clipping */
 }
 
 .hero__inner {
