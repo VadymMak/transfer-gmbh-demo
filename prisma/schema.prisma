@@ -377,6 +377,9 @@ model HeroConfig {
   title     String  @default("Kate Barber Studio")
   subtitle  String  @default("Prémiový barber studio v Trenčíne")
   ctaText   String  @default("Rezervovať termín")
+  titleI18n    Json?
+  subtitleI18n Json?
+  ctaTextI18n  Json?
   imageUrl  String?
 
   updatedAt DateTime @updatedAt

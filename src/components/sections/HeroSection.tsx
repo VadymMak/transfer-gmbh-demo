@@ -9,11 +9,15 @@ interface HeroConfig {
   title?: string | null;
   subtitle?: string | null;
   ctaText?: string | null;
+  titleI18n?: unknown;
+  subtitleI18n?: unknown;
+  ctaTextI18n?: unknown;
   imageUrl?: string | null;
 }
 
 interface HeroSectionProps {
   config?: HeroConfig | null;
+  locale?: string;
   city?: string;
   googleRating?: number;
   openingHours?: WorkingHours;
@@ -23,6 +27,7 @@ interface HeroSectionProps {
 
 export default async function HeroSection({
   config,
+  locale = 'de',
   city,
   googleRating,
   openingHours,
@@ -31,9 +36,15 @@ export default async function HeroSection({
 }: HeroSectionProps) {
   const tHero = await getTranslations('hero');
 
-  const title    = config?.title    || tHero('defaultTitle');
-  const subtitle = config?.subtitle || tHero('defaultSubtitle');
-  const ctaText  = config?.ctaText  || tHero('defaultCta');
+  const DEFAULT_LOCALE = 'de';
+  const pick = (raw: unknown, legacy: string | null | undefined, key: string) => {
+    const map = raw as Record<string, string> | null | undefined;
+    return map?.[locale] || map?.[DEFAULT_LOCALE] || legacy || tHero(key as Parameters<typeof tHero>[0]);
+  };
+
+  const title    = pick(config?.titleI18n,    config?.title,    'defaultTitle');
+  const subtitle = pick(config?.subtitleI18n, config?.subtitle, 'defaultSubtitle');
+  const ctaText  = pick(config?.ctaTextI18n,  config?.ctaText,  'defaultCta');
   const imageSrc = config?.imageUrl || null;
 
   const hoursText   = formatHoursDisplay(openingHours);
@@ -53,16 +64,18 @@ export default async function HeroSection({
           <p className="hero__subtitle">{subtitle}</p>
 
           <div className="hero__chips">
-            <span className="hero__chip">{tHero('chip1')}</span>
-            <span className="hero__chip">{tHero('chip2')}</span>
-            <span className="hero__chip">{tHero('chip3')}</span>
-            <span className="hero__chip">{tHero('chip4')}</span>
+            <span className="hero__chip">{tHero('chipCut')}</span>
+            <span className="hero__chip">{tHero('chipBeard')}</span>
+            <span className="hero__chip">{tHero('chipShave')}</span>
+            <span className="hero__chip">{tHero('chipCourses')}</span>
           </div>
 
-          <p className="hero__price-anchor">{tHero('priceAnchor')}</p>
+          <p className="hero__price-anchor">
+            {tHero('priceFrom')} <strong>€15</strong> · {tHero('priceBeardFrom')} <strong>€10</strong>
+          </p>
 
           <div className="hero__buttons">
-            <a href="#angebot" className="btn-primary">
+            <a href="#rezervacia" className="btn-primary">
               {ctaText}
             </a>
             {whatsappBookingLink && whatsappBookingLink !== '#' && (
@@ -104,7 +117,7 @@ export default async function HeroSection({
             <>
               <Image
                 src={imageSrc}
-                alt={`${title} interior`}
+                alt={title}
                 fill
                 className="hero__image"
                 priority

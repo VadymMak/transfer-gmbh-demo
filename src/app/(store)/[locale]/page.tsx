@@ -59,6 +59,7 @@ export default async function HomePage({
     <>
       <HeroSection
         config={heroConfig}
+        locale={locale}
         city={presence.city}
         googleRating={presence.googleRating}
         openingHours={presence.openingHours}

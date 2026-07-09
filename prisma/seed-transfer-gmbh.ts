@@ -80,12 +80,49 @@ async function main() {
   // 2. HeroConfig
   await db.heroConfig.upsert({
     where: { storeId: store.id },
-    update: {},
+    update: {
+      titleI18n: {
+        de: 'Zuverlässige Flughafentransfers Wien ⇄ Bratislava',
+        en: 'Reliable Airport Transfers Vienna ⇄ Bratislava',
+        sk: 'Spoľahlivé letiskové transfery Viedeň ⇄ Bratislava',
+        cs: 'Spolehlivé letištní transfery Vídeň ⇄ Bratislava',
+      },
+      subtitleI18n: {
+        de: 'Festpreise · Lizenziert & versichert · 24/7 erreichbar',
+        en: 'Fixed prices · Licensed & insured · Available 24/7',
+        sk: 'Pevné ceny · Licencované & poistené · Dostupné 24/7',
+        cs: 'Pevné ceny · Licencované & pojištěné · Dostupné 24/7',
+      },
+      ctaTextI18n: {
+        de: 'Angebot anfragen',
+        en: 'Request a quote',
+        sk: 'Vyžiadať ponuku',
+        cs: 'Vyžádat nabídku',
+      },
+    },
     create: {
       storeId: store.id,
       title: 'Zuverlässige Flughafentransfers Wien ⇄ Bratislava',
       subtitle: 'Festpreise · Lizenziert & versichert · 24/7 erreichbar',
       ctaText: 'Angebot anfragen',
+      titleI18n: {
+        de: 'Zuverlässige Flughafentransfers Wien ⇄ Bratislava',
+        en: 'Reliable Airport Transfers Vienna ⇄ Bratislava',
+        sk: 'Spoľahlivé letiskové transfery Viedeň ⇄ Bratislava',
+        cs: 'Spolehlivé letištní transfery Vídeň ⇄ Bratislava',
+      },
+      subtitleI18n: {
+        de: 'Festpreise · Lizenziert & versichert · 24/7 erreichbar',
+        en: 'Fixed prices · Licensed & insured · Available 24/7',
+        sk: 'Pevné ceny · Licencované & poistené · Dostupné 24/7',
+        cs: 'Pevné ceny · Licencované & pojištěné · Dostupné 24/7',
+      },
+      ctaTextI18n: {
+        de: 'Angebot anfragen',
+        en: 'Request a quote',
+        sk: 'Vyžiadať ponuku',
+        cs: 'Vyžádat nabídku',
+      },
     },
   });
 
