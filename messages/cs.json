@@ -753,10 +753,12 @@
     "label": "Ceník",
     "title": "Trasy a ceny",
     "subtitle": "Transparentní fixní ceny pro vaše cestování",
-    "priceLabel": "Fixní cena",
+    "priceLabel": "Pevná cena",
+    "vehicleCaption": "za vozidlo",
+    "featuredLabel": "oblíbené",
     "routeLabel": "Trasa",
     "durationLabel": "Doba jízdy",
-    "note": "Všechny ceny jsou fixní včetně DPH. Žádné skryté poplatky."
+    "note": "Všechny ceny jsou pevné včetně DPH. Žádné skryté poplatky."
   },
   "fleet": {
     "label": "Vozidla",

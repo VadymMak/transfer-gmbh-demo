@@ -750,6 +750,8 @@
     "title": "Routes & Prices",
     "subtitle": "Transparent fixed prices for your journey",
     "priceLabel": "Fixed Price",
+    "vehicleCaption": "per vehicle",
+    "featuredLabel": "popular",
     "routeLabel": "Route",
     "durationLabel": "Duration",
     "note": "All prices are fixed including VAT. No hidden costs."

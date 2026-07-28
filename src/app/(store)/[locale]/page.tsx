@@ -45,8 +45,8 @@ export default async function HomePage({
     // Routes: services with category 'route'
     db.service.findMany({
       where: { storeId: config.id, active: true, category: 'route' },
-      orderBy: { price: 'asc' },
-      select: { id: true, nameKey: true, price: true, description: true },
+      orderBy: { sortOrder: 'asc' },
+      select: { id: true, nameKey: true, price: true, description: true, sortOrder: true, metadata: true },
     }),
     // Fleet: services with category 'fleet'
     db.service.findMany({
@@ -72,7 +72,7 @@ export default async function HomePage({
       <TransferQuoteSection
         whatsappNumber={presence.whatsapp ?? presence.phone ?? undefined}
       />
-      <RoutesSection routes={dbServices} />
+      <RoutesSection routes={dbServices} locale={locale} />
       <FleetSection fleet={dbFleet} />
       <ServicesSection />
       <WhyUsSection city={presence.city} googleRating={presence.googleRating} address={presence.address} />

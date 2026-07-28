@@ -750,6 +750,8 @@
     "title": "Strecken & Preise",
     "subtitle": "Transparente Festpreise für Ihre Reise",
     "priceLabel": "Festpreis",
+    "vehicleCaption": "pro Fahrzeug",
+    "featuredLabel": "beliebt",
     "routeLabel": "Strecke",
     "durationLabel": "Dauer",
     "note": "Alle Preise sind Festpreise inkl. MwSt. Keine versteckten Kosten."

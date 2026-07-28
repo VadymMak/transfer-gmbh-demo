@@ -2,18 +2,26 @@ import { getTranslations } from 'next-intl/server';
 import GoldDivider from '@/components/ui/GoldDivider';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
+interface RouteMeta {
+  nameI18n?: Record<string, string>;
+  featured?: boolean;
+}
+
 interface Route {
   id: string;
   nameKey: string;
   price: number;
   description: string | null;
+  sortOrder: number;
+  metadata: unknown;
 }
 
 interface RoutesSectionProps {
   routes: Route[];
+  locale: string;
 }
 
-export default async function RoutesSection({ routes }: RoutesSectionProps) {
+export default async function RoutesSection({ routes, locale }: RoutesSectionProps) {
   const t = await getTranslations('routes');
 
   return (
@@ -27,20 +35,30 @@ export default async function RoutesSection({ routes }: RoutesSectionProps) {
 
       <div className="services__grid">
         {routes.map((route, i) => {
+          const meta = route.metadata as RouteMeta | null;
+          const name = meta?.nameI18n?.[locale] ?? meta?.nameI18n?.['de'] ?? route.nameKey;
+          const featured = meta?.featured ?? false;
           const priceStr = Number.isInteger(route.price)
-            ? `€${route.price}`
-            : `€${route.price.toFixed(2)}`;
+            ? `${route.price} €`
+            : `${route.price.toFixed(2)} €`;
 
           return (
-            <ScrollReveal key={route.id} direction="scale" delay={i * 100}>
-              <div className="service-card">
+            <ScrollReveal key={route.id} direction="scale" delay={i * 80}>
+              <div className={`service-card${featured ? ' service-card--featured' : ''}`}>
                 <div>
-                  <h3 className="service-card__name">{route.nameKey}</h3>
+                  {featured && (
+                    <span className="service-card__badge">{t('featuredLabel')}</span>
+                  )}
+                  <h3 className="service-card__name">{name}</h3>
                   {route.description && (
                     <p className="service-card__desc">{route.description}</p>
                   )}
                 </div>
-                <div className="service-card__price">{priceStr}</div>
+                <div className="service-card__price">
+                  <span className="service-card__price-label">{t('priceLabel')}</span>
+                  <strong>{priceStr}</strong>
+                  <span className="service-card__price-caption">{t('vehicleCaption')}</span>
+                </div>
               </div>
             </ScrollReveal>
           );

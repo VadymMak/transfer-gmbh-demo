@@ -144,29 +144,144 @@ async function main() {
     },
   });
 
-  // 4. Routes (category: 'route')
+  // 4. Routes (category: 'route') — real price list Cenník platný od 15.7.2024
+  // sortOrder: featured routes 1-4 (appear first), then non-featured 5-13 by price
   const routes = [
-    { slug: 'vie-bratislava-zentrum', nameKey: 'Wien Flughafen (VIE) → Bratislava Zentrum', price: 65, description: 'ca. 1h 30min · Festpreis' },
-    { slug: 'bratislava-bts-wien', nameKey: 'Bratislava (BTS) → Wien Flughafen (VIE)', price: 65, description: 'ca. 1h 30min · Festpreis' },
-    { slug: 'wien-zentrum-bratislava', nameKey: 'Wien Zentrum → Bratislava Zentrum', price: 75, description: 'ca. 1h 15min · Festpreis' },
-    { slug: 'bratislava-zentrum-wien-zentrum', nameKey: 'Bratislava Zentrum → Wien Zentrum', price: 75, description: 'ca. 1h 15min · Festpreis' },
-    { slug: 'vie-wien-innenstadt', nameKey: 'Wien Flughafen (VIE) → Wien Innenstadt', price: 45, description: 'ca. 25min · Festpreis' },
-    { slug: 'wien-innenstadt-vie', nameKey: 'Wien Innenstadt → Wien Flughafen (VIE)', price: 45, description: 'ca. 25min · Festpreis' },
+    // --- Featured (popular) ---
+    {
+      slug: 'trencin-letisko-bratislava',
+      nameKey: 'Trenčín → Flughafen Bratislava',
+      price: 90,
+      sortOrder: 1,
+      featured: true,
+      nameI18n: { de: 'Trenčín → Flughafen Bratislava', sk: 'Trenčín → Letisko Bratislava', cs: 'Trenčín → Letiště Bratislava', en: 'Trenčín → Bratislava Airport' },
+    },
+    {
+      slug: 'trencin-letisko-vieden',
+      nameKey: 'Trenčín → Flughafen Wien',
+      price: 145,
+      sortOrder: 2,
+      featured: true,
+      nameI18n: { de: 'Trenčín → Flughafen Wien', sk: 'Trenčín → Letisko Viedeň', cs: 'Trenčín → Letiště Vídeň', en: 'Trenčín → Vienna Airport' },
+    },
+    {
+      slug: 'trencin-vieden',
+      nameKey: 'Trenčín → Wien',
+      price: 155,
+      sortOrder: 3,
+      featured: true,
+      nameI18n: { de: 'Trenčín → Wien', sk: 'Trenčín → Viedeň', cs: 'Trenčín → Vídeň', en: 'Trenčín → Vienna' },
+    },
+    {
+      slug: 'trencin-prag',
+      nameKey: 'Trenčín → Prag',
+      price: 235,
+      sortOrder: 4,
+      featured: true,
+      nameI18n: { de: 'Trenčín → Prag', sk: 'Trenčín → Praha', cs: 'Trenčín → Praha', en: 'Trenčín → Prague' },
+    },
+    // --- Non-featured, sorted by price ---
+    {
+      slug: 'trencin-bratislava',
+      nameKey: 'Trenčín → Bratislava',
+      price: 100,
+      sortOrder: 5,
+      featured: false,
+      nameI18n: { de: 'Trenčín → Bratislava', sk: 'Trenčín → Bratislava', cs: 'Trenčín → Bratislava', en: 'Trenčín → Bratislava' },
+    },
+    {
+      slug: 'trencin-brno',
+      nameKey: 'Trenčín → Brno',
+      price: 100,
+      sortOrder: 6,
+      featured: false,
+      nameI18n: { de: 'Trenčín → Brno', sk: 'Trenčín → Brno', cs: 'Trenčín → Brno', en: 'Trenčín → Brno' },
+    },
+    {
+      slug: 'trencin-nove-zamky',
+      nameKey: 'Trenčín → Nové Zámky',
+      price: 100,
+      sortOrder: 7,
+      featured: false,
+      nameI18n: { de: 'Trenčín → Nové Zámky', sk: 'Trenčín → Nové Zámky', cs: 'Trenčín → Nové Zámky', en: 'Trenčín → Nové Zámky' },
+    },
+    {
+      slug: 'trencin-banska-bystrica',
+      nameKey: 'Trenčín → Banská Bystrica',
+      price: 110,
+      sortOrder: 8,
+      featured: false,
+      nameI18n: { de: 'Trenčín → Banská Bystrica', sk: 'Trenčín → Banská Bystrica', cs: 'Trenčín → Banská Bystrica', en: 'Trenčín → Banská Bystrica' },
+    },
+    {
+      slug: 'trencin-oravsky-podzamok',
+      nameKey: 'Trenčín → Oravský Podzámok',
+      price: 120,
+      sortOrder: 9,
+      featured: false,
+      nameI18n: { de: 'Trenčín → Oravský Podzámok', sk: 'Trenčín → Oravský Podzámok', cs: 'Trenčín → Oravský Podzámok', en: 'Trenčín → Oravský Podzámok' },
+    },
+    {
+      slug: 'trencin-podhajska',
+      nameKey: 'Trenčín → Podhájska',
+      price: 120,
+      sortOrder: 10,
+      featured: false,
+      nameI18n: { de: 'Trenčín → Podhájska', sk: 'Trenčín → Podhájska', cs: 'Trenčín → Podhájska', en: 'Trenčín → Podhájska' },
+    },
+    {
+      slug: 'trencin-letisko-katowice',
+      nameKey: 'Trenčín → Flughafen Katowice',
+      price: 185,
+      sortOrder: 11,
+      featured: false,
+      nameI18n: { de: 'Trenčín → Flughafen Katowice', sk: 'Trenčín → Letisko Katowice', cs: 'Trenčín → Letiště Katovice', en: 'Trenčín → Katowice Airport' },
+    },
+    {
+      slug: 'trencin-kosice',
+      nameKey: 'Trenčín → Košice',
+      price: 225,
+      sortOrder: 12,
+      featured: false,
+      nameI18n: { de: 'Trenčín → Košice', sk: 'Trenčín → Košice', cs: 'Trenčín → Košice', en: 'Trenčín → Košice' },
+    },
+    {
+      slug: 'trencin-letisko-prag',
+      nameKey: 'Trenčín → Flughafen Prag',
+      price: 245,
+      sortOrder: 13,
+      featured: false,
+      nameI18n: { de: 'Trenčín → Flughafen Prag', sk: 'Trenčín → Letisko Praha', cs: 'Trenčín → Letiště Praha', en: 'Trenčín → Prague Airport' },
+    },
   ];
 
+  // Remove old placeholder routes before upserting real ones
+  await db.service.deleteMany({
+    where: {
+      storeId: store.id,
+      category: 'route',
+      slug: { in: [
+        'vie-bratislava-zentrum', 'bratislava-bts-wien', 'wien-zentrum-bratislava',
+        'bratislava-zentrum-wien-zentrum', 'vie-wien-innenstadt', 'wien-innenstadt-vie',
+      ]},
+    },
+  });
+
   for (const r of routes) {
+    const metadata = { nameI18n: r.nameI18n, featured: r.featured };
     await db.service.upsert({
       where: { storeId_slug: { storeId: store.id, slug: r.slug } },
-      update: { price: r.price, description: r.description },
+      update: { price: r.price, nameKey: r.nameKey, sortOrder: r.sortOrder, metadata },
       create: {
         storeId: store.id,
         slug: r.slug,
         nameKey: r.nameKey,
         price: r.price,
         duration: 0,
-        description: r.description,
+        sortOrder: r.sortOrder,
         category: 'route',
         active: true,
+        metadata,
       },
     });
   }
