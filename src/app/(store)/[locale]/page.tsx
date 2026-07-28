@@ -2,6 +2,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { db } from '@/lib/db';
 import { getStoreConfig } from '@/lib/store-config';
 import HeroSection from '@/components/sections/HeroSection';
+import RoutesTicker from '@/components/sections/RoutesTicker';
 import DecorativeDivider from '@/components/ui/DecorativeDivider';
 import StatsBar from '@/components/sections/StatsBar';
 import TransferQuoteSection from '@/components/sections/TransferQuoteSection';
@@ -17,6 +18,13 @@ import ContactSection from '@/components/sections/ContactSection';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 
 export const revalidate = 60;
+
+const TICKER_ARIA_LABEL: Record<string, string> = {
+  de: 'Strecken und Festpreise',
+  sk: 'Trasy a pevné ceny',
+  cs: 'Trasy a pevné ceny',
+  en: 'Routes and fixed prices',
+};
 
 export default async function HomePage({
   params,
@@ -56,6 +64,22 @@ export default async function HomePage({
     }),
   ]);
 
+  // Resolve locale-aware names once — used by both RoutesTicker and RoutesSection
+  const mappedRoutes = dbServices.map((r) => {
+    const meta = r.metadata as { nameI18n?: Record<string, string>; featured?: boolean } | null;
+    return {
+      id: r.id,
+      displayName: meta?.nameI18n?.[locale] ?? meta?.nameI18n?.['de'] ?? r.nameKey,
+      price: r.price,
+      description: r.description,
+      featured: meta?.featured ?? false,
+    };
+  });
+
+  const minRoutePrice = mappedRoutes.length
+    ? Math.min(...mappedRoutes.map((r) => r.price))
+    : null;
+
   return (
     <>
       <HeroSection
@@ -66,23 +90,18 @@ export default async function HomePage({
         openingHours={presence.openingHours}
         whatsappBookingLink={whatsappLinks.booking}
         instagram={presence.instagram}
-        minRoutePrice={dbServices.length ? Math.min(...dbServices.map((s) => s.price)) : null}
+        minRoutePrice={minRoutePrice}
+      />
+      <RoutesTicker
+        routes={mappedRoutes}
+        ariaLabel={TICKER_ARIA_LABEL[locale] ?? TICKER_ARIA_LABEL.de}
       />
       <DecorativeDivider />
       <StatsBar googleRating={presence.googleRating} />
       <TransferQuoteSection
         whatsappNumber={presence.whatsapp ?? presence.phone ?? undefined}
       />
-      <RoutesSection routes={dbServices.map((r) => {
-          const meta = r.metadata as { nameI18n?: Record<string, string>; featured?: boolean } | null;
-          return {
-            id: r.id,
-            displayName: meta?.nameI18n?.[locale] ?? meta?.nameI18n?.['de'] ?? r.nameKey,
-            price: r.price,
-            description: r.description,
-            featured: meta?.featured ?? false,
-          };
-        })} />
+      <RoutesSection routes={mappedRoutes} />
       <FleetSection fleet={dbFleet} />
       <ServicesSection />
       <WhyUsSection city={presence.city} googleRating={presence.googleRating} address={presence.address} />
