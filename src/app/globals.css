@@ -380,7 +380,7 @@ body::after {
 .hero {
   background: var(--color-bg);
   overflow: hidden;
-  min-height: 100vh;
+  min-height: 70vh;
   /* no fixed height — hero grows with content so longer translations
      (e.g. auto-translated RU) push content down instead of overlapping/clipping */
 }
@@ -389,7 +389,7 @@ body::after {
   position: relative;
   max-width: 1600px;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
 }
@@ -400,7 +400,7 @@ body::after {
   isolation: isolate;
   flex: 0 0 58%;
   max-width: 640px;
-  padding: 8rem 3rem 8rem 5rem;
+  padding: 4rem 3rem 4rem 5rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;

@@ -96,11 +96,11 @@ export default async function HomePage({
         routes={mappedRoutes}
         ariaLabel={TICKER_ARIA_LABEL[locale] ?? TICKER_ARIA_LABEL.de}
       />
-      <DecorativeDivider />
       <StatsBar googleRating={presence.googleRating} />
       <TransferQuoteSection
         whatsappNumber={presence.whatsapp ?? presence.phone ?? undefined}
       />
+      <DecorativeDivider />
       <RoutesSection routes={mappedRoutes} />
       <FleetSection fleet={dbFleet} />
       <ServicesSection />
