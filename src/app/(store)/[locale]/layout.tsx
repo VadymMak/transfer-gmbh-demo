@@ -57,9 +57,19 @@ export async function generateMetadata({
   const ogLocale = locale === 'de' ? 'de_DE' : locale === 'sk' ? 'sk_SK' : locale === 'cs' ? 'cs_CZ' : 'en_US';
   const ogImage = config.ogImageUrl ?? `${baseUrl}/og-image.jpg`;
 
+  const languages: Record<string, string> = Object.fromEntries(
+    routing.locales.map((l) => [l, `${baseUrl}/${l}`])
+  );
+  languages['x-default'] = `${baseUrl}/de`;
+
   return {
     title,
     description,
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: `${baseUrl}/${locale}`,
+      languages,
+    },
     openGraph: {
       title,
       description,
