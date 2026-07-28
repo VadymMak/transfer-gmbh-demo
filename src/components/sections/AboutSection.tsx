@@ -12,13 +12,10 @@ export default async function AboutSection(_: AboutSectionProps) {
 
   return (
     <section id="ueber-uns" className="about">
+      <AboutVideo />
+      <div className="about__overlay" />
       <div className="about__grid">
-        <ScrollReveal direction="left">
-          <div className="about__image-wrap">
-            <AboutVideo />
-          </div>
-        </ScrollReveal>
-
+        <div className="about__spacer" aria-hidden="true" />
         <ScrollReveal direction="right" delay={150}>
           <div>
             <p className="about__label">{t('label')}</p>
