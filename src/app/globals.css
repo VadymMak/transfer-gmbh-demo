@@ -1363,11 +1363,20 @@ body::after {
 
 /* ===== ABOUT ===== */
 .about {
+  background: var(--color-bg);
+  padding: 6rem 2rem;   /* side padding keeps the inner panel away from viewport edges */
+}
+
+/* Centered panel — video + text contained here */
+.about__inner {
   position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 480px;
   overflow: hidden;
-  padding: 6rem 2rem;
-  /* poster shows on reduced-motion or before video loads */
-  background: var(--color-bg) url('/media/about-poster.jpg') center/cover no-repeat;
+  border-radius: 12px;
+  /* poster as fallback: shows before video / on reduced-motion */
+  background: url('/media/about-poster.jpg') center/cover no-repeat;
 }
 
 .about__video {
@@ -1401,12 +1410,11 @@ body::after {
 .about__grid {
   position: relative;
   z-index: 2;
-  max-width: 1000px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  padding: 3rem 3rem;
 }
 
 /* Left cell — empty; video shows through */
@@ -1438,9 +1446,10 @@ body::after {
 .about__text strong { color: var(--color-primary); }
 
 @media (max-width: 768px) {
-  .about__grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about__inner { border-radius: 6px; }
+  .about__grid { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.5rem; }
   .about__spacer { display: none; }
-  /* On mobile: full-section vertical overlay for text readability */
+  /* Mobile: full vertical overlay so centered text stays readable */
   .about__overlay {
     background: linear-gradient(
       to bottom,
