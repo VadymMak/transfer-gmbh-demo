@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import GoldDivider from '@/components/ui/GoldDivider';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import RouteCard from './RouteCard';
 
 interface Route {
   id: string;
@@ -27,32 +28,22 @@ export default async function RoutesSection({ routes }: RoutesSectionProps) {
       </ScrollReveal>
 
       <div className="services__grid">
-        {routes.map((route, i) => {
-          const priceStr = Number.isInteger(route.price)
-            ? `${route.price} €`
-            : `${route.price.toFixed(2)} €`;
-
-          return (
-            <ScrollReveal key={route.id} direction="scale" delay={i * 80}>
-              <div className={`service-card${route.featured ? ' service-card--featured' : ''}`}>
-                <div>
-                  {route.featured && (
-                    <span className="service-card__badge">{t('featuredLabel')}</span>
-                  )}
-                  <h3 className="service-card__name">{route.displayName}</h3>
-                  {route.description && (
-                    <p className="service-card__desc">{route.description}</p>
-                  )}
-                </div>
-                <div className="service-card__price">
-                  <span className="service-card__price-label">{t('priceLabel')}</span>
-                  <strong>{priceStr}</strong>
-                  <span className="service-card__price-caption">{t('vehicleCaption')}</span>
-                </div>
-              </div>
-            </ScrollReveal>
-          );
-        })}
+        {routes.map((route, i) => (
+          <ScrollReveal key={route.id} direction="scale" delay={i * 80}>
+            <RouteCard
+              id={route.id}
+              displayName={route.displayName}
+              price={route.price}
+              description={route.description}
+              featured={route.featured}
+              priceLabel={t('priceLabel')}
+              vehicleCaption={t('vehicleCaption')}
+              featuredLabel={t('featuredLabel')}
+              ctaHint={t('ctaHint')}
+              routeLabel={t('routeLabel')}
+            />
+          </ScrollReveal>
+        ))}
       </div>
 
       <p className="booking__note">{t('note')}</p>

@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import GoldDivider from '@/components/ui/GoldDivider';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import { useQuotePrefill } from '@/stores/useQuotePrefill';
 
 interface TransferQuoteSectionProps {
   whatsappNumber?: string;
@@ -14,26 +15,46 @@ export default function TransferQuoteSection({
 }: TransferQuoteSectionProps) {
   const t = useTranslations('transferQuote');
 
+  const [pickup, setPickup] = useState('');
+  const [dropoff, setDropoff] = useState('');
+  const [note, setNote] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const dateInputRef = useRef<HTMLInputElement>(null);
+
+  const { active, pickup: prefillPickup, dropoff: prefillDropoff, note: prefillNote, clearPrefill } =
+    useQuotePrefill();
+
+  useEffect(() => {
+    if (!active) return;
+    setPickup(prefillPickup);
+    setDropoff(prefillDropoff);
+    setNote(prefillNote);
+    clearPrefill();
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const timer = setTimeout(() => dateInputRef.current?.focus(), 650);
+    return () => clearTimeout(timer);
+  }, [active]); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    const pickup      = String(data.get('pickup')      ?? '').trim();
-    const dropoff     = String(data.get('dropoff')     ?? '').trim();
-    const date        = String(data.get('date')        ?? '').trim();
-    const time        = String(data.get('time')        ?? '').trim();
-    const passengers  = String(data.get('passengers')  ?? '').trim();
-    const luggage     = String(data.get('luggage')     ?? '').trim();
-    const flightNumber = String(data.get('flightNumber') ?? '').trim();
-    const name        = String(data.get('name')        ?? '').trim();
-    const phone       = String(data.get('phone')       ?? '').trim();
-    const note        = String(data.get('note')        ?? '').trim();
+    const pickupVal     = pickup.trim();
+    const dropoffVal    = dropoff.trim();
+    const date          = String(data.get('date')         ?? '').trim();
+    const time          = String(data.get('time')         ?? '').trim();
+    const passengers    = String(data.get('passengers')   ?? '').trim();
+    const luggage       = String(data.get('luggage')      ?? '').trim();
+    const flightNumber  = String(data.get('flightNumber') ?? '').trim();
+    const name          = String(data.get('name')         ?? '').trim();
+    const phone         = String(data.get('phone')        ?? '').trim();
+    const noteVal       = note.trim();
 
-    if (!pickup || !dropoff || !date || !time || !name || !phone) {
+    if (!pickupVal || !dropoffVal || !date || !time || !name || !phone) {
       setSubmitError(t('errorRequired'));
       return;
     }
@@ -45,7 +66,10 @@ export default function TransferQuoteSection({
       const res = await fetch('/api/transfer-quotes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pickup, dropoff, date, time, passengers, luggage, flightNumber, name, phone, note }),
+        body: JSON.stringify({
+          pickup: pickupVal, dropoff: dropoffVal, date, time,
+          passengers, luggage, flightNumber, name, phone, note: noteVal,
+        }),
       });
 
       if (!res.ok) {
@@ -58,12 +82,12 @@ export default function TransferQuoteSection({
         `🚗 *Transferanfrage — Transfer GmbH*`,
         `━━━━━━━━━━━━━━━━━━`,
         `👤 ${name}  📞 ${phone}`,
-        `📍 Von: ${pickup}`,
-        `🏁 Nach: ${dropoff}`,
+        `📍 Von: ${pickupVal}`,
+        `🏁 Nach: ${dropoffVal}`,
         `📆 ${date}  🕐 ${time}`,
         `👥 ${passengers} Person(en)  🧳 ${luggage} Koffer`,
         flightNumber ? `✈️ Flugnummer: ${flightNumber}` : '',
-        note ? `💬 ${note}` : '',
+        noteVal ? `💬 ${noteVal}` : '',
         `━━━━━━━━━━━━━━━━━━`,
       ].filter(Boolean).join('\n');
 
@@ -75,6 +99,9 @@ export default function TransferQuoteSection({
       );
 
       form.reset();
+      setPickup('');
+      setDropoff('');
+      setNote('');
     } catch {
       setSubmitError(t('errorNetwork'));
     } finally {
@@ -83,7 +110,7 @@ export default function TransferQuoteSection({
   }
 
   return (
-    <section id="angebot" className="booking">
+    <section id="angebot" className="booking" ref={sectionRef as React.RefObject<HTMLElement>}>
       <ScrollReveal direction="up" className="section-header">
         <p className="section-label">{t('label')}</p>
         <h2 className="section-title">{t('title')}</h2>
@@ -105,6 +132,8 @@ export default function TransferQuoteSection({
                   required
                   className="booking__input"
                   placeholder="Wien Flughafen"
+                  value={pickup}
+                  onChange={(e) => setPickup(e.target.value)}
                 />
               </div>
               <div>
@@ -115,6 +144,8 @@ export default function TransferQuoteSection({
                   required
                   className="booking__input"
                   placeholder="Bratislava Zentrum"
+                  value={dropoff}
+                  onChange={(e) => setDropoff(e.target.value)}
                 />
               </div>
             </div>
@@ -124,6 +155,7 @@ export default function TransferQuoteSection({
               <div>
                 <label className="booking__label">{t('fieldDate')}</label>
                 <input
+                  ref={dateInputRef}
                   type="date"
                   name="date"
                   required
@@ -215,6 +247,8 @@ export default function TransferQuoteSection({
               <textarea
                 name="note"
                 className="booking__textarea"
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
               />
             </div>
 

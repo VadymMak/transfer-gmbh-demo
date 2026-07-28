@@ -758,7 +758,8 @@
     "featuredLabel": "oblíbené",
     "routeLabel": "Trasa",
     "durationLabel": "Doba jízdy",
-    "note": "Všechny ceny jsou pevné včetně DPH. Žádné skryté poplatky."
+    "note": "Všechny ceny jsou pevné včetně DPH. Žádné skryté poplatky.",
+    "ctaHint": "Vyžádat nabídku"
   },
   "fleet": {
     "label": "Vozidla",

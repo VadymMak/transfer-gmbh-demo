@@ -754,7 +754,8 @@
     "featuredLabel": "popular",
     "routeLabel": "Route",
     "durationLabel": "Duration",
-    "note": "All prices are fixed including VAT. No hidden costs."
+    "note": "All prices are fixed including VAT. No hidden costs.",
+    "ctaHint": "Request quote"
   },
   "fleet": {
     "label": "Vehicles",

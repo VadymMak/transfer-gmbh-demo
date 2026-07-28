@@ -754,7 +754,8 @@
     "featuredLabel": "beliebt",
     "routeLabel": "Strecke",
     "durationLabel": "Dauer",
-    "note": "Alle Preise sind Festpreise inkl. MwSt. Keine versteckten Kosten."
+    "note": "Alle Preise sind Festpreise inkl. MwSt. Keine versteckten Kosten.",
+    "ctaHint": "Angebot anfragen"
   },
   "fleet": {
     "label": "Fahrzeuge",
