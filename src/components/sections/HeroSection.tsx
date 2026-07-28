@@ -1,9 +1,7 @@
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { formatHoursDisplay } from '@/lib/formatHours';
 import type { WorkingHours } from '@/lib/store-config';
 import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
-import { BLUR_PLACEHOLDER } from '@/components/ui/BlurImage';
 
 interface HeroConfig {
   title?: string | null;
@@ -47,8 +45,6 @@ export default async function HeroSection({
   const title    = pick(config?.titleI18n,    config?.title,    'defaultTitle');
   const subtitle = pick(config?.subtitleI18n, config?.subtitle, 'defaultSubtitle');
   const ctaText  = pick(config?.ctaTextI18n,  config?.ctaText,  'defaultCta');
-  const imageSrc = config?.imageUrl || null;
-
   const hoursText   = formatHoursDisplay(openingHours);
   const ratingLabel = googleRating ? `⭐ Google ${googleRating}` : null;
 
@@ -115,26 +111,20 @@ export default async function HeroSection({
         </div>
 
         <div className="hero__image-wrap">
-          {imageSrc ? (
-            <>
-              <Image
-                src={imageSrc}
-                alt={title}
-                fill
-                className="hero__image"
-                priority
-                fetchPriority="high"
-                sizes="(max-width: 768px) 100vw, 42vw"
-                quality={85}
-                unoptimized={imageSrc.startsWith('http')}
-                placeholder="blur"
-                blurDataURL={BLUR_PLACEHOLDER}
-              />
-              <div className="hero__overlay" />
-            </>
-          ) : (
-            <div className="hero__image-placeholder" />
-          )}
+          <video
+            className="hero__video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="/media/hero-poster.jpg"
+            aria-hidden="true"
+          >
+            <source src="/media/hero.webm" type="video/webm" />
+            <source src="/media/hero.mp4"  type="video/mp4" />
+          </video>
+          <div className="hero__overlay" />
         </div>
       </div>
     </section>
