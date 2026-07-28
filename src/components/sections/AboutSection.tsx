@@ -1,13 +1,13 @@
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import GoldDivider from '@/components/ui/GoldDivider';
+import AboutVideo from './AboutVideo';
 
 interface AboutSectionProps {
   aboutImage?: string | null;
 }
 
-export default async function AboutSection({ aboutImage }: AboutSectionProps) {
+export default async function AboutSection(_: AboutSectionProps) {
   const t = await getTranslations('about');
 
   return (
@@ -15,18 +15,7 @@ export default async function AboutSection({ aboutImage }: AboutSectionProps) {
       <div className="about__grid">
         <ScrollReveal direction="left">
           <div className="about__image-wrap">
-            {aboutImage ? (
-              <Image
-                src={aboutImage}
-                alt={t('imageAlt')}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="about__image"
-                unoptimized={aboutImage.startsWith('http')}
-              />
-            ) : (
-              <div className="about__image-placeholder" />
-            )}
+            <AboutVideo />
           </div>
         </ScrollReveal>
 
