@@ -12,6 +12,7 @@ import WhyUsSection from '@/components/sections/WhyUsSection';
 import AboutSection from '@/components/sections/AboutSection';
 import GallerySection from '@/components/sections/GallerySection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import FaqSection from '@/components/sections/FaqSection';
 import ContactSection from '@/components/sections/ContactSection';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 
@@ -86,6 +87,7 @@ export default async function HomePage({
         adminReply: t.adminReply,
         adminReplyAt: t.adminReplyAt?.toISOString() ?? null,
       }))} />
+      <FaqSection locale={locale} />
       <ContactSection
         address={presence.address}
         city={presence.city}
