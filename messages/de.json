@@ -387,7 +387,7 @@
     "chip2": "Businessfahrt",
     "chip3": "Events",
     "chip4": "Langstrecke",
-    "priceAnchor": "Ab €45 pro Transfer"
+    "priceAnchor": "ab {price} € pro Transfer"
   },
   "menuCategories": {
     "tagline": "— UNSERE SPEISEKARTE —",

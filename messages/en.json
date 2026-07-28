@@ -387,7 +387,7 @@
     "chip2": "Business Rides",
     "chip3": "Events",
     "chip4": "Long Distance",
-    "priceAnchor": "From €45 per transfer"
+    "priceAnchor": "from {price} € per transfer"
   },
   "menuCategories": {
     "tagline": "— OUR MENU —",

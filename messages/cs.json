@@ -387,7 +387,7 @@
     "chip2": "Firemní jízdy",
     "chip3": "Události",
     "chip4": "Dálkové trasy",
-    "priceAnchor": "Od €45 za transfer"
+    "priceAnchor": "od {price} € za transfer"
   },
   "menuCategories": {
     "tagline": "— NAŠE MENU —",

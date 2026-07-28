@@ -66,13 +66,23 @@ export default async function HomePage({
         openingHours={presence.openingHours}
         whatsappBookingLink={whatsappLinks.booking}
         instagram={presence.instagram}
+        minRoutePrice={dbServices.length ? Math.min(...dbServices.map((s) => s.price)) : null}
       />
       <DecorativeDivider />
       <StatsBar googleRating={presence.googleRating} />
       <TransferQuoteSection
         whatsappNumber={presence.whatsapp ?? presence.phone ?? undefined}
       />
-      <RoutesSection routes={dbServices} locale={locale} />
+      <RoutesSection routes={dbServices.map((r) => {
+          const meta = r.metadata as { nameI18n?: Record<string, string>; featured?: boolean } | null;
+          return {
+            id: r.id,
+            displayName: meta?.nameI18n?.[locale] ?? meta?.nameI18n?.['de'] ?? r.nameKey,
+            price: r.price,
+            description: r.description,
+            featured: meta?.featured ?? false,
+          };
+        })} />
       <FleetSection fleet={dbFleet} />
       <ServicesSection />
       <WhyUsSection city={presence.city} googleRating={presence.googleRating} address={presence.address} />

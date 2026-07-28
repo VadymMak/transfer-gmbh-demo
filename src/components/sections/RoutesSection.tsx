@@ -2,26 +2,19 @@ import { getTranslations } from 'next-intl/server';
 import GoldDivider from '@/components/ui/GoldDivider';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
-interface RouteMeta {
-  nameI18n?: Record<string, string>;
-  featured?: boolean;
-}
-
 interface Route {
   id: string;
-  nameKey: string;
+  displayName: string;
   price: number;
   description: string | null;
-  sortOrder: number;
-  metadata: unknown;
+  featured: boolean;
 }
 
 interface RoutesSectionProps {
   routes: Route[];
-  locale: string;
 }
 
-export default async function RoutesSection({ routes, locale }: RoutesSectionProps) {
+export default async function RoutesSection({ routes }: RoutesSectionProps) {
   const t = await getTranslations('routes');
 
   return (
@@ -35,21 +28,18 @@ export default async function RoutesSection({ routes, locale }: RoutesSectionPro
 
       <div className="services__grid">
         {routes.map((route, i) => {
-          const meta = route.metadata as RouteMeta | null;
-          const name = meta?.nameI18n?.[locale] ?? meta?.nameI18n?.['de'] ?? route.nameKey;
-          const featured = meta?.featured ?? false;
           const priceStr = Number.isInteger(route.price)
             ? `${route.price} €`
             : `${route.price.toFixed(2)} €`;
 
           return (
             <ScrollReveal key={route.id} direction="scale" delay={i * 80}>
-              <div className={`service-card${featured ? ' service-card--featured' : ''}`}>
+              <div className={`service-card${route.featured ? ' service-card--featured' : ''}`}>
                 <div>
-                  {featured && (
+                  {route.featured && (
                     <span className="service-card__badge">{t('featuredLabel')}</span>
                   )}
-                  <h3 className="service-card__name">{name}</h3>
+                  <h3 className="service-card__name">{route.displayName}</h3>
                   {route.description && (
                     <p className="service-card__desc">{route.description}</p>
                   )}

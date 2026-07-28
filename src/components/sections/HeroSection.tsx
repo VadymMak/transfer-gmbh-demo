@@ -23,6 +23,7 @@ interface HeroSectionProps {
   openingHours?: WorkingHours;
   whatsappBookingLink?: string;
   instagram?: string;
+  minRoutePrice?: number | null;
 }
 
 export default async function HeroSection({
@@ -33,6 +34,7 @@ export default async function HeroSection({
   openingHours,
   whatsappBookingLink,
   instagram,
+  minRoutePrice,
 }: HeroSectionProps) {
   const tHero = await getTranslations('hero');
 
@@ -70,7 +72,9 @@ export default async function HeroSection({
             <span className="hero__chip">{tHero('chip4')}</span>
           </div>
 
-          <p className="hero__price-anchor">{tHero('priceAnchor')}</p>
+          {minRoutePrice != null && (
+            <p className="hero__price-anchor">{tHero('priceAnchor', { price: minRoutePrice })}</p>
+          )}
 
           <div className="hero__buttons">
             <a href="#rezervacia" className="btn-primary">
