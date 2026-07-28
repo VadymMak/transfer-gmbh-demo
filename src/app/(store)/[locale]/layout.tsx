@@ -137,13 +137,28 @@ export default async function LocaleLayout({
     sk: 'SK', cs: 'CZ', de: 'DE', uk: 'UA', en: 'GB', pl: 'PL', ru: 'RU',
   };
   const addressCountry = localeCountryMap[locale] ?? 'SK';
+  const sameAs = [config.presence.instagram, config.presence.facebook].filter(Boolean) as string[];
+  const ogImage = config.ogImageUrl ?? `${baseUrl}/og-image.jpg`;
   const jsonLdRaw: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': config.vertical.schemaType,
+    '@id': `${baseUrl}/#business`,
     name: config.name,
     description: seoDescription,
     url: `${baseUrl}/${locale}`,
+    image: ogImage,
     telephone: config.presence.phone,
+    priceRange: '€€',
+    currenciesAccepted: 'EUR',
+    paymentAccepted: 'Cash, Credit Card',
+    areaServed: [
+      { '@type': 'City', name: 'Wien' },
+      { '@type': 'City', name: 'Bratislava' },
+      { '@type': 'Airport', name: 'Vienna International Airport', iataCode: 'VIE' },
+      { '@type': 'Airport', name: 'Bratislava Airport', iataCode: 'BTS' },
+      { '@type': 'Country', name: 'Austria' },
+      { '@type': 'Country', name: 'Slovakia' },
+    ],
     ...(config.presence.address
       ? {
           address: {
@@ -174,6 +189,17 @@ export default async function LocaleLayout({
           },
         }
       : {}),
+    ...(config.presence.alwaysOpen
+      ? {
+          openingHoursSpecification: {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            opens: '00:00',
+            closes: '23:59',
+          },
+        }
+      : {}),
+    ...(sameAs.length ? { sameAs } : {}),
   };
 
   return (
