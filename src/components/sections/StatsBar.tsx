@@ -14,7 +14,7 @@ export default async function StatsBar({ googleRating }: StatsBarProps) {
     { number: '5+',    label: t('yearsLabel')   },
     { number: '2K+',   label: t('clientsLabel') },
     { number: '50+',   label: t('barbersLabel') },
-    { number: googleRating ? String(googleRating) : '4.9', label: t('googleLabel') },
+    ...(googleRating != null ? [{ number: String(googleRating), label: t('googleLabel') }] : []),
   ];
 
   return (

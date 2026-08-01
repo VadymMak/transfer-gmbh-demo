@@ -8,10 +8,12 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher/LanguageSwitcher'
 
 export default function Header({
   logoUrl,
+  storeName,
   whatsappBookingLink = '#',
   activeLocales,
 }: {
   logoUrl?: string;
+  storeName?: string;
   whatsappBookingLink?: string;
   activeLocales?: string[];
 }) {
@@ -66,7 +68,8 @@ export default function Header({
             /* eslint-disable-next-line @next/next/no-img-element */
             <img src={logoUrl} alt="Logo" className="header__logo-img" />
           ) : (
-            <>Transfer <span className="header__logo-span">GmbH</span></>
+            <>{storeName ?? 'Euroschnell'}</>
+
           )}
         </Link>
 

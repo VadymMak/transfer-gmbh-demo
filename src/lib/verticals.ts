@@ -5,7 +5,7 @@ import type { Vertical } from '@prisma/client';
 export interface VerticalConfig {
   vertical: string;
   label: string;
-  schemaType: string;
+  schemaType: string | string[];
 
   product: {
     metadataFields: MetadataField[];
@@ -333,7 +333,7 @@ export const VERTICAL_CONFIGS: Record<Vertical, VerticalConfig> = {
   SERVICES: {
     vertical: 'SERVICES',
     label: 'Services / Barbershop',
-    schemaType: 'HairSalon',
+    schemaType: ['LocalBusiness', 'TaxiService'],
     product: {
       metadataFields: [],
       showBrand: false,
