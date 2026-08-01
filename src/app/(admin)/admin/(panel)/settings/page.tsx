@@ -78,6 +78,7 @@ export default function AdminSettingsPage() {
     facebook: '',
     instagram: '',
     whatsapp: '',
+    telegram: '',
   });
 
   // Working hours — parsed from openingHours JSON string
@@ -411,6 +412,9 @@ export default function AdminSettingsPage() {
               </div>
               <Field label={tr.settings.whatsappLabel}>
                 <input className={styles.input} value={store.whatsapp} placeholder="https://wa.me/421..." onChange={(e) => sStore('whatsapp', e.target.value)} />
+              </Field>
+              <Field label="Telegram">
+                <input className={styles.input} value={store.telegram} placeholder="https://t.me/..." onChange={(e) => sStore('telegram', e.target.value)} />
               </Field>
 
               <button type="button" className={styles.saveBtn} onClick={saveStore} disabled={saving}>

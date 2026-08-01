@@ -33,6 +33,7 @@ export interface StorePresence {
   founderName?: string;
   instagram?: string;
   facebook?: string;
+  telegram?: string;
   googleRating?: number;
   mapCoords?: { lat: number; lng: number };
 }
@@ -102,6 +103,7 @@ export const getStoreConfig = cache(async (): Promise<StoreConfig> => {
       googleRating: true,
       mapLat: true,
       mapLng: true,
+      metadata: true,
     },
   });
 
@@ -127,6 +129,7 @@ export const getStoreConfig = cache(async (): Promise<StoreConfig> => {
     founderName: store.founderName ?? undefined,
     instagram: store.instagramUrl ?? undefined,
     facebook: store.facebook ?? undefined,
+    telegram: ((store.metadata as Record<string, unknown> | null)?.telegram as string) || undefined,
     googleRating: store.googleRating ?? undefined,
     mapCoords:
       store.mapLat && store.mapLng
