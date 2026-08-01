@@ -287,24 +287,22 @@ async function main() {
   }
 
   // 5. Fleet (category: 'fleet')
+  await db.service.deleteMany({
+    where: { storeId: store.id, category: 'fleet', slug: { in: ['limousine', 'van', 'minibus'] } },
+  });
+
   const fleet = [
     {
-      slug: 'limousine',
-      nameKey: 'Limousine Premium',
-      description: 'Mercedes-Benz E-Klasse oder ähnlich. Klimaanlage, WLAN, Wasser.',
-      metadata: { capacity: '1–3 Personen', luggage: '3 Koffer', model: 'Mercedes E-Klasse' },
+      slug: 'audi-a6',
+      nameKey: 'Audi A6',
+      description: 'Elegante Business-Limousine. Klimaanlage, Lederausstattung, ruhige und komfortable Fahrt.',
+      metadata: { capacity: '1–4 Personen', luggage: '3 Koffer', model: 'Audi A6', class: 'Business' },
     },
     {
-      slug: 'van',
-      nameKey: 'Van Business',
-      description: 'Mercedes-Benz V-Klasse oder ähnlich. Ideal für Gruppen und viel Gepäck.',
-      metadata: { capacity: '4–8 Personen', luggage: '8 Koffer', model: 'Mercedes V-Klasse' },
-    },
-    {
-      slug: 'minibus',
-      nameKey: 'Minibus',
-      description: 'Sprinter oder ähnlich. Für größere Gruppen und Gruppenausflüge.',
-      metadata: { capacity: '9–16 Personen', luggage: '16 Koffer', model: 'Mercedes Sprinter' },
+      slug: 'skoda-octavia',
+      nameKey: 'Škoda Octavia Combi',
+      description: 'Komfortabler Kombi mit großem Kofferraum. Ideal für Reisende mit mehr Gepäck.',
+      metadata: { capacity: '1–4 Personen', luggage: '4 Koffer', model: 'Škoda Octavia Combi', class: 'Comfort' },
     },
   ];
 
