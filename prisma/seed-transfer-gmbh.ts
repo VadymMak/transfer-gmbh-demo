@@ -295,14 +295,34 @@ async function main() {
     {
       slug: 'audi-a6',
       nameKey: 'Audi A6',
-      description: 'Elegante Business-Limousine. Klimaanlage, Lederausstattung, ruhige und komfortable Fahrt.',
-      metadata: { capacity: '1–4 Personen', luggage: '3 Koffer', model: 'Audi A6', class: 'Business' },
+      description: null,
+      metadata: {
+        capacity: '4', luggage: '3', model: 'Audi A6', class: 'Business',
+        descI18n: {
+          sk: 'Elegantná business limuzína. Klimatizácia, kožené čalúnenie, tichá a pohodlná jazda.',
+          cs: 'Elegantní business limuzína. Klimatizace, kožené čalounění, tichá a pohodlná jízda.',
+          de: 'Elegante Business-Limousine. Klimaanlage, Lederausstattung, ruhige und komfortable Fahrt.',
+          en: 'Elegant business sedan. Air conditioning, leather interior, quiet and comfortable ride.',
+          ru: 'Элегантный бизнес-седан. Кондиционер, кожаный салон, тихая и комфортная поездка.',
+          uk: 'Елегантний бізнес-седан. Кондиціонер, шкіряний салон, тиха та комфортна поїздка.',
+        },
+      },
     },
     {
       slug: 'skoda-octavia',
       nameKey: 'Škoda Octavia Combi',
-      description: 'Komfortabler Kombi mit großem Kofferraum. Ideal für Reisende mit mehr Gepäck.',
-      metadata: { capacity: '1–4 Personen', luggage: '4 Koffer', model: 'Škoda Octavia Combi', class: 'Comfort' },
+      description: null,
+      metadata: {
+        capacity: '4', luggage: '4', model: 'Škoda Octavia Combi', class: 'Comfort',
+        descI18n: {
+          sk: 'Pohodlné kombi s veľkým batožinovým priestorom. Ideálne pre viac batožiny.',
+          cs: 'Pohodlné kombi s velkým zavazadlovým prostorem. Ideální pro více zavazadel.',
+          de: 'Komfortabler Kombi mit großem Kofferraum. Ideal für mehr Gepäck.',
+          en: 'Comfortable estate with a large boot. Ideal for more luggage.',
+          ru: 'Комфортный универсал с большим багажником. Идеально для большого багажа.',
+          uk: 'Комфортний універсал з великим багажником. Ідеально для великого багажу.',
+        },
+      },
     },
   ];
 
