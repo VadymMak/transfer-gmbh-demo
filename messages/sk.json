@@ -720,7 +720,10 @@
     "yearsLabel": "Roky skúseností",
     "clientsLabel": "Spokojných zákazníkov",
     "barbersLabel": "Jázd denne",
-    "googleLabel": "Hodnotenie Google"
+    "googleLabel": "Hodnotenie Google",
+    "vehicles": "Vozidlá",
+    "destinations": "Destinácií",
+    "availability": "K dispozícii"
   },
   "seo": {
     "description": "Profesionálny barbershop a kaderníctvo v {city}. Pánske strihanie, úprava brady a styling.",

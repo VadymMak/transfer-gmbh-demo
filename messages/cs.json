@@ -720,7 +720,10 @@
     "yearsLabel": "Let zkušeností",
     "clientsLabel": "Spokojených zákazníků",
     "barbersLabel": "Jízd denně",
-    "googleLabel": "Hodnocení Google"
+    "googleLabel": "Hodnocení Google",
+    "vehicles": "Vozidla",
+    "destinations": "Destinací",
+    "availability": "K dispozici"
   },
   "seo": {
     "description": "Profesionální barbershop a kadeřnictví v {city}. Pánské střihy, holení a styling.",

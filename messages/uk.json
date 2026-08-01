@@ -711,7 +711,10 @@
     "yearsLabel": "Років досвіду",
     "clientsLabel": "Задоволених клієнтів",
     "barbersLabel": "Професійні барбери",
-    "googleLabel": "Рейтинг Google"
+    "googleLabel": "Рейтинг Google",
+    "vehicles": "Авто",
+    "destinations": "Напрямків",
+    "availability": "Доступність"
   },
   "seo": {
     "description": "Професійний барбершоп та перукарня в {city}. Чоловічі стрижки, догляд за бородою та стайлінг.",

@@ -716,7 +716,10 @@
     "yearsLabel": "Jahre Erfahrung",
     "clientsLabel": "Zufriedene Kunden",
     "barbersLabel": "Strecken täglich",
-    "googleLabel": "Google-Bewertung"
+    "googleLabel": "Google-Bewertung",
+    "vehicles": "Fahrzeuge",
+    "destinations": "Reiseziele",
+    "availability": "Verfügbar"
   },
   "seo": {
     "description": "Professioneller Barbershop und Friseursalon in {city}. Herrenhaarschnitte, Bartpflege und Styling.",

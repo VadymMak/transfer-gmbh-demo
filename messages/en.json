@@ -716,7 +716,10 @@
     "yearsLabel": "Years experience",
     "clientsLabel": "Happy customers",
     "barbersLabel": "Rides per day",
-    "googleLabel": "Google rating"
+    "googleLabel": "Google rating",
+    "vehicles": "Vehicles",
+    "destinations": "Destinations",
+    "availability": "Availability"
   },
   "seo": {
     "description": "Professional barbershop and hair salon in {city}. Men's haircuts, beard grooming and styling.",

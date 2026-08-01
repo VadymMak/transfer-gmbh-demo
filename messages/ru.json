@@ -711,7 +711,10 @@
     "yearsLabel": "Лет опыта",
     "clientsLabel": "Довольных клиентов",
     "barbersLabel": "Профессиональные барберы",
-    "googleLabel": "Оценка Google"
+    "googleLabel": "Оценка Google",
+    "vehicles": "Авто",
+    "destinations": "Направлений",
+    "availability": "Доступность"
   },
   "seo": {
     "description": "Профессиональный барбершоп и парикмахерская в {city}. Мужские стрижки, уход за бородой и стайлинг.",

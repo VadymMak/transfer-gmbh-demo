@@ -642,13 +642,15 @@ body::after {
 }
 
 .stats-bar__grid {
-  max-width: 900px;
+  max-width: 1080px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3rem;
   text-align: center;
 }
+.stats-bar__grid > * { min-width: 120px; }
 
 .stats-bar__number {
   font-family: var(--font-display);
@@ -666,7 +668,7 @@ body::after {
 }
 
 @media (max-width: 768px) {
-  .stats-bar__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .stats-bar__grid { gap: 1.5rem 2rem; }
 }
 
 /* ===== SERVICES ===== */
