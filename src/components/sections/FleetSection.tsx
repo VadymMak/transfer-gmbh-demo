@@ -15,13 +15,15 @@ interface VehicleMeta {
   capacity?: string;
   luggage?: string;
   model?: string;
+  descI18n?: Record<string, string>;
 }
 
 interface FleetSectionProps {
   fleet: FleetVehicle[];
+  locale?: string;
 }
 
-export default async function FleetSection({ fleet }: FleetSectionProps) {
+export default async function FleetSection({ fleet, locale = 'sk' }: FleetSectionProps) {
   const t = await getTranslations('fleet');
 
   return (
@@ -86,9 +88,10 @@ export default async function FleetSection({ fleet }: FleetSectionProps) {
                   </p>
                 )}
 
-                {vehicle.description && (
-                  <p className="team-exp">{vehicle.description}</p>
-                )}
+                {(() => {
+                  const desc = meta.descI18n?.[locale] ?? meta.descI18n?.['en'] ?? vehicle.description;
+                  return desc ? <p className="team-exp">{desc}</p> : null;
+                })()}
               </div>
             </ScrollReveal>
           );

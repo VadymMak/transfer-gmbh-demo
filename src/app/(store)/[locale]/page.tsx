@@ -102,7 +102,7 @@ export default async function HomePage({
       />
       <DecorativeDivider />
       <RoutesSection routes={mappedRoutes} />
-      <FleetSection fleet={dbFleet} />
+      <FleetSection fleet={dbFleet} locale={locale} />
       <ServicesSection />
       <WhyUsSection city={presence.city} googleRating={presence.googleRating} address={presence.address} />
       <AboutSection aboutImage={config.aboutImage} />
