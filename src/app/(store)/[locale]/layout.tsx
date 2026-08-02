@@ -7,6 +7,7 @@ import { routing, type Locale } from '@/i18n/routing';
 import Header from '@/components/layout/Header/Header';
 import Footer from '@/components/layout/Footer/Footer';
 import CookieBanner from '@/components/ui/CookieBanner/CookieBanner';
+import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import { getStoreConfig } from '@/lib/store-config';
 import { getActiveLocales } from '@/config';
 import { themeToCssVars, DEFAULT_THEME } from '@/lib/theme';
@@ -221,6 +222,7 @@ export default async function LocaleLayout({
                 <main>{children}</main>
                 <Footer config={config} locale={locale} />
                 <CookieBanner />
+                <WhatsAppButton href={config.whatsappLinks.general} />
               </PresenceProvider>
             </VerticalProvider>
           </CustomerProvider>
