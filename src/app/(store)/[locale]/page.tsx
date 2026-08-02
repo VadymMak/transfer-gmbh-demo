@@ -69,6 +69,8 @@ export default async function HomePage({
     const meta = r.metadata as { nameI18n?: Record<string, string>; featured?: boolean } | null;
     return {
       id: r.id,
+      nameKey: r.nameKey,
+      metadata: r.metadata,
       displayName: meta?.nameI18n?.[locale] ?? meta?.nameI18n?.['de'] ?? r.nameKey,
       price: r.price,
       description: r.description,
