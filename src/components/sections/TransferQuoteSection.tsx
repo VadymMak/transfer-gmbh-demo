@@ -142,15 +142,14 @@ export default function TransferQuoteSection({
             <div className="booking__form-row">
               <div>
                 <label className="booking__label">{t('fieldPickup')}</label>
-                <input
-                  type="text"
-                  name="pickup"
-                  autoComplete="off"
-                  required
-                  className="booking__input"
-                  placeholder="Wien Flughafen"
+                <RouteCombobox
+                  routes={routes}
                   value={pickup}
-                  onChange={(e) => setPickup(e.target.value)}
+                  onChange={(label) => setPickup(label)}
+                  name="pickup"
+                  required
+                  showPrice={false}
+                  placeholder="Wien Flughafen"
                 />
               </div>
               <div>
