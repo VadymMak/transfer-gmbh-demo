@@ -99,6 +99,7 @@ export default async function HomePage({
       <StatsBar googleRating={presence.googleRating} />
       <TransferQuoteSection
         whatsappNumber={presence.whatsapp ?? presence.phone ?? undefined}
+        routes={mappedRoutes.map(r => ({ nameKey: r.displayName, price: r.price }))}
       />
       <DecorativeDivider />
       <RoutesSection routes={mappedRoutes} />

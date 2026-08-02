@@ -738,7 +738,8 @@
     "successNote": "Wniosek zapisany. Po kliknięciu WhatsApp otworzy się do potwierdzenia.",
     "errorRequired": "Proszę wypełnić wszystkie wymagane pola.",
     "errorSave": "Błąd podczas zapisu. Spróbuj ponownie.",
-    "errorNetwork": "Błąd sieci. Spróbuj ponownie."
+    "errorNetwork": "Błąd sieci. Spróbuj ponownie.",
+    "priceHint": "Szacunkowa cena: {price} €"
   },
   "routes": {
     "label": "Cennik",

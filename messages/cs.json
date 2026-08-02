@@ -760,7 +760,8 @@
     "successNote": "Požadavek uložen. Po kliknutí se otevře WhatsApp pro potvrzení.",
     "errorRequired": "Vyplňte prosím všechna povinná pole.",
     "errorSave": "Chyba při ukládání. Zkuste to znovu.",
-    "errorNetwork": "Chyba sítě. Zkuste to znovu."
+    "errorNetwork": "Chyba sítě. Zkuste to znovu.",
+    "priceHint": "Orientační cena: {price} €"
   },
   "routes": {
     "label": "Ceník",

@@ -756,7 +756,8 @@
     "successNote": "Anfrage gespeichert. Nach dem Klick öffnet sich WhatsApp zur Bestätigung.",
     "errorRequired": "Bitte alle Pflichtfelder ausfüllen.",
     "errorSave": "Fehler beim Speichern. Bitte erneut versuchen.",
-    "errorNetwork": "Netzwerkfehler. Bitte erneut versuchen."
+    "errorNetwork": "Netzwerkfehler. Bitte erneut versuchen.",
+    "priceHint": "Richtpreis: {price} €"
   },
   "routes": {
     "label": "Preisliste",
