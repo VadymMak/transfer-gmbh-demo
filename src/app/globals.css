@@ -2256,3 +2256,16 @@ body::after {
 .hero__chip { background: rgba(var(--color-primary-rgb, 201,163,71), 0.12); border: 1px solid rgba(var(--color-primary-rgb, 201,163,71), 0.3); color: var(--color-text); border-radius: 2rem; padding: 0.3rem 0.75rem; font-size: 0.8rem; font-weight: 500; }
 .hero__price-anchor { font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: 1.25rem; }
 .hero__price-anchor strong { color: var(--color-primary); font-size: 1rem; }
+
+/* Fix browser autofill background on themed inputs (was white on dark theme) */
+.booking__input:-webkit-autofill,
+.booking__input:-webkit-autofill:hover,
+.booking__input:-webkit-autofill:focus,
+.booking__input:-webkit-autofill:active,
+.booking__textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-text);
+  -webkit-box-shadow: 0 0 0 1000px var(--color-bg-subtle) inset;
+  box-shadow: 0 0 0 1000px var(--color-bg-subtle) inset;
+  caret-color: var(--color-text);
+  transition: background-color 9999s ease-in-out 0s;
+}
