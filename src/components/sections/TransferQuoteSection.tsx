@@ -145,6 +145,7 @@ export default function TransferQuoteSection({
                 <input
                   type="text"
                   name="pickup"
+                  autoComplete="off"
                   required
                   className="booking__input"
                   placeholder="Wien Flughafen"
