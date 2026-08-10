@@ -141,7 +141,7 @@ export default async function LocaleLayout({
   const sameAs = [
     config.presence.instagram,
     config.presence.facebook,
-    'https://www.wikidata.org/wiki/Q140974304',
+    'https://www.wikidata.org/wiki/Q140973912',
   ].filter(Boolean) as string[];
   const ogImage = config.ogImageUrl ?? `${baseUrl}/og-image.jpg`;
   const jsonLdRaw: Record<string, unknown> = {
@@ -156,7 +156,8 @@ export default async function LocaleLayout({
     priceRange: '€€',
     currenciesAccepted: 'EUR',
     paymentAccepted: 'Cash, Credit Card',
-    identifier: { '@type': 'PropertyValue', propertyID: 'IČO', value: '53647190' },
+    identifier: { '@type': 'PropertyValue', propertyID: 'IČO', value: '57093865' },
+    taxID: '3120653360',
     areaServed: [
       { '@type': 'City', name: 'Wien' },
       { '@type': 'City', name: 'Bratislava' },
