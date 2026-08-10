@@ -11,11 +11,11 @@ export const LOCALE_LABELS: Record<SupportedLocale, string> = {
 };
 
 // Store identity
-export const STORE_NAME = 'Transfer GmbH';
-export const WHATSAPP_NUMBER = '43664XXXXXXX';
-export const PHONE = '+43 664 000 00 00';
-export const EMAIL = 'info@transfer-gmbh.at';
-export const ADDRESS = 'Wiedner Hauptstraße 120, 1050 Wien, Österreich';
+export const STORE_NAME = 'Euroschnell';
+export const WHATSAPP_NUMBER = '421948976954';
+export const PHONE = '+421 948 976 954';
+export const EMAIL = 'info@euroschnell.eu';
+// TODO_FROM_GOOGLE: GPS coordinates and DIČ are not yet confirmed — do not invent these values.
 
 // Time slot generation helpers
 export const BUSINESS_START = '06:00';
@@ -39,7 +39,7 @@ export const STATIC_MASTERS: MasterItem[] = [
 
 export const STATIC_TESTIMONIALS: StaticTestimonial[] = [
   { id: 't1', name: 'Klaus B.',     text: 'Pünktlich, sauber, freundlich. Der Transfer zum Flughafen hat perfekt geklappt. Sehr empfehlenswert!', rating: 5 },
-  { id: 't2', name: 'Martina S.',   text: 'Buchung war einfach, Fahrer war vor Ort, alles reibungslos. Werde Transfer GmbH wieder buchen.',          rating: 5 },
+  { id: 't2', name: 'Martina S.',   text: 'Buchung war einfach, Fahrer war vor Ort, alles reibungslos. Werde Euroschnell wieder buchen.',          rating: 5 },
   { id: 't3', name: 'Jozef P.',     text: 'Skvelý servis, vodič prišiel včas a doviezol nás bez problémov na letisko. Odporúčam!',                  rating: 5 },
   { id: 't4', name: 'Miriam H.',    text: 'Business transfer verlief absolut professionell. Limousine war tip-top, Fahrer sehr kompetent.',           rating: 5 },
 ];
@@ -71,7 +71,7 @@ export const TEAM: TeamMember[] = [
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
-  { stars: 5, text: '"Absolut professioneller Service. Fahrer war 10 Minuten vor der vereinbarten Zeit da, das Auto war sauber und komfortabel. Transfer GmbH ist meine erste Wahl für Flughafentransfers."', author: 'Klaus B.',   date: 'Google Bewertung · März 2026'    },
+  { stars: 5, text: '"Absolut professioneller Service. Fahrer war 10 Minuten vor der vereinbarten Zeit da, das Auto war sauber und komfortabel. Euroschnell ist meine erste Wahl für Flughafentransfers."', author: 'Klaus B.',   date: 'Google Bewertung · März 2026'    },
   { stars: 5, text: '"Transfer von Bratislava nach Wien geklappt wie am Schnürchen. Preis fair, Kommunikation top. Danke!"',                                                                                  author: 'Martina S.', date: 'Google Bewertung · Februar 2026' },
   { stars: 5, text: '"Business-Transfer für ein wichtiges Meeting — pünktlich, diskret, professionell. Sehr gerne wieder!"',                                                                                  author: 'Miriam H.',  date: 'Google Bewertung · Januar 2026'  },
 ];

@@ -14,7 +14,7 @@ const adapter = new PrismaPg(pool);
 const db = new PrismaClient({ adapter });
 
 async function main() {
-  console.log('Seeding Transfer GmbH...');
+  console.log('Seeding Euroschnell...');
 
   // Navy theme for transport/business verticals
   const navyTheme = {
@@ -52,27 +52,36 @@ async function main() {
   };
 
   // 1. Store
+  // TODO_FROM_GOOGLE: GPS coordinates (mapLat/mapLng) are not yet confirmed — do not invent.
   const store = await db.store.upsert({
     where: { slug: 'transfer-gmbh' },
-    update: { themeConfig: navyTheme, openingHours: null },
+    update: {
+      themeConfig: navyTheme,
+      openingHours: null,
+      name: 'Euroschnell',
+      city: 'Trenčín',
+      phone: '+421 948 976 954',
+      whatsappPhone: '421948976954',
+      email: 'info@euroschnell.eu',
+      founderName: 'Euroschnell',
+    },
     create: {
       slug: 'transfer-gmbh',
-      name: 'Transfer GmbH',
+      name: 'Euroschnell',
       description: 'Professionelle Flughafentransfers Wien ⇄ Bratislava. Festpreise, lizenziert, 24/7.',
       vertical: Vertical.SERVICES,
       primaryMode: StoreMode.PHYSICAL,
       regionBundle: 'EU',
-      address: 'Wiedner Hauptstraße 120',
-      postalCode: '1050',
-      city: 'Wien',
-      phone: '+421 951 287 892',
-      whatsappPhone: '421951287892',
-      email: 'info@transfer-gmbh.at',
-      founderName: 'Transfer GmbH',
-      instagramUrl: 'https://instagram.com/transfergmbh',
-      googleRating: 4.9,
-      mapLat: 48.2081743,
-      mapLng: 16.3738189,
+      address: 'Východná 2336/13',  // from Impressum page
+      postalCode: '911 08',          // from Impressum page
+      city: 'Trenčín',
+      phone: '+421 948 976 954',
+      whatsappPhone: '421948976954',
+      email: 'info@euroschnell.eu',
+      founderName: 'Euroschnell',
+      // instagramUrl: null — no confirmed Instagram handle
+      // googleRating: null — not set until verified on Google Business
+      // mapLat/mapLng: TODO_FROM_GOOGLE — GPS coordinates not yet confirmed
       themeConfig: navyTheme,
     },
   });
@@ -127,20 +136,30 @@ async function main() {
   });
 
   // 3. LegalConfig
+  // TODO_FROM_GOOGLE: DIČ (vatId) — business appears non-VAT-registered; verify before adding.
   await db.legalConfig.upsert({
     where: { storeId: store.id },
-    update: {},
+    update: {
+      companyName: 'Euroschnell',
+      street: 'Východná 2336/13',
+      zip: '911 08',
+      city: 'Trenčín',
+      country: 'Slovensko',
+      email: 'info@euroschnell.eu',
+      phone: '+421 948 976 954',
+      vatId: '',
+    },
     create: {
       storeId: store.id,
       enabled: true,
-      companyName: 'Transfer GmbH',
-      street: 'Wiedner Hauptstraße 120',
-      zip: '1050',
-      city: 'Wien',
-      country: 'Österreich',
-      email: 'info@transfer-gmbh.at',
-      phone: '+421 951 287 892',
-      vatId: 'ATU00000000',
+      companyName: 'Euroschnell',
+      street: 'Východná 2336/13',
+      zip: '911 08',
+      city: 'Trenčín',
+      country: 'Slovensko',
+      email: 'info@euroschnell.eu',
+      phone: '+421 948 976 954',
+      vatId: '',
     },
   });
 
@@ -371,7 +390,7 @@ async function main() {
   // 7. Testimonials (German, approved)
   const testimonials = [
     { text: 'Pünktlich, sauber, freundlicher Fahrer. Transfer vom Flughafen Wien nach Bratislava war absolut problemlos. Sehr empfehlenswert!', rating: 5, authorName: 'Markus W.', locale: 'de' },
-    { text: 'Wir haben Transfer GmbH für unsere Messefahrt zur ViennaAutoShow gebucht. Van war perfekt — 6 Personen + Gepäck, kein Problem. Preis-Leistung top.', rating: 5, authorName: 'Johannes K.', locale: 'de' },
+    { text: 'Wir haben Euroschnell für unsere Messefahrt zur ViennaAutoShow gebucht. Van war perfekt — 6 Personen + Gepäck, kein Problem. Preis-Leistung top.', rating: 5, authorName: 'Johannes K.', locale: 'de' },
     { text: 'Flug hatte 45 Minuten Verspätung, der Fahrer hat trotzdem gewartet ohne Aufpreis. Das ist Service, den man sich wünscht. Danke!', rating: 5, authorName: 'Felix B.', locale: 'de' },
   ];
 
@@ -401,7 +420,7 @@ async function main() {
     },
   });
 
-  console.log('Transfer GmbH seed complete!');
+  console.log('Euroschnell seed complete!');
   console.log('   Store slug: transfer-gmbh');
   console.log('   Admin: admin@transfer-gmbh.at / transfer2026');
 }

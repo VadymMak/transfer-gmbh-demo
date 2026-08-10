@@ -1,7 +1,7 @@
 import { defineRouting } from 'next-intl/routing';
 
 /**
- * EU-only routing for Transfer GmbH.
+ * EU-only routing for Euroschnell.
  * Only de/sk/cs/en are served — requests for other locales are redirected to /de by middleware.
  */
 export const routing = defineRouting({
