@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { routing } from '@/i18n/routing';
 import { db } from '@/lib/db';
 import { getBaseUrl } from '@/lib/url';
+import { ROUTE_PAGES } from '@/lib/route-pages';
 
 const STORE_SLUG = process.env.STORE_SLUG ?? 'electromarket';
 
@@ -71,6 +72,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.5,
+      });
+    }
+  }
+
+  // Transfer route landing pages (SEO/GEO)
+  for (const locale of routing.locales) {
+    for (const r of ROUTE_PAGES) {
+      entries.push({
+        url: `${baseUrl}/${locale}/transfer/${r.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.9,
       });
     }
   }
