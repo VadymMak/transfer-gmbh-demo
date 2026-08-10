@@ -138,7 +138,11 @@ export default async function LocaleLayout({
     sk: 'SK', cs: 'CZ', de: 'DE', uk: 'UA', en: 'GB', pl: 'PL', ru: 'RU',
   };
   const addressCountry = localeCountryMap[locale] ?? 'SK';
-  const sameAs = [config.presence.instagram, config.presence.facebook].filter(Boolean) as string[];
+  const sameAs = [
+    config.presence.instagram,
+    config.presence.facebook,
+    'https://www.wikidata.org/wiki/Q140974304',
+  ].filter(Boolean) as string[];
   const ogImage = config.ogImageUrl ?? `${baseUrl}/og-image.jpg`;
   const jsonLdRaw: Record<string, unknown> = {
     '@context': 'https://schema.org',
@@ -152,6 +156,7 @@ export default async function LocaleLayout({
     priceRange: '€€',
     currenciesAccepted: 'EUR',
     paymentAccepted: 'Cash, Credit Card',
+    identifier: { '@type': 'PropertyValue', propertyID: 'IČO', value: '53647190' },
     areaServed: [
       { '@type': 'City', name: 'Wien' },
       { '@type': 'City', name: 'Bratislava' },

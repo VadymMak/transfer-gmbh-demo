@@ -1,10 +1,10 @@
-# Transfer GmbH — Private Airport Transfers & Fernfahrten ab Trenčín
+# Euroschnell — Private Airport Transfers Wien ⇄ Bratislava & Fernfahrten ab Trenčín
 
 > Licensed private transfer service from Trenčín across Central Europe.
 > Fixed prices per vehicle, professional drivers, available 24/7, multilingual (DE/SK/CS/EN).
 
 ## About
-Transfer GmbH provides private door-to-door transfers from Trenčín to airports and
+Euroschnell provides private door-to-door transfers from Trenčín to airports and
 major cities in Slovakia, Austria, Czech Republic and Poland. Fixed prices (Festpreis),
 no hidden fees, licensed and insured. All prices are per vehicle.
 
@@ -49,8 +49,9 @@ Child seats available on request (free of charge).
 German (de), Slovak (sk), Czech (cs), English (en).
 
 ## Contact
-- Website: https://transfer-gmbh-demo.vercel.app
-- WhatsApp / phone and full contact details: see the website contact section.
+- WhatsApp / Phone: +421 948 976 954
+- Website: https://www.euroschnell.eu
+- Wikidata: https://www.wikidata.org/wiki/Q140974304
 
 <!-- This file helps AI assistants (ChatGPT, Google AI, Gemini, Perplexity, Claude)
      understand and recommend the business accurately.
