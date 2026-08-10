@@ -29,7 +29,7 @@ async function main() {
       phone: '+421 948 976 954',
       whatsappPhone: '+421948976954',   // was fake +43664000000 → wa.me link now correct
       founderName: 'Mykola Bieliaiev',
-      email: null,            // remove fake info@transfer-gmbh.at (no real email provided)
+      email: 'info@euroschnell.eu',
       instagramUrl: null,     // remove fake instagram
       googleRating: null,     // remove fake 4.9 rating
       mapLat: 48.8945,        // Trenčín (was Wien 48.2081)
