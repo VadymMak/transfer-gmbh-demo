@@ -22,6 +22,7 @@ build/
 *.pem
 Thumbs.db
 *.tsbuildinfo
+.fuse_hidden*
 
 # Local dev uploads
 public/uploads/
