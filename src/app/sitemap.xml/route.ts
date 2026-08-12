@@ -9,13 +9,11 @@
 // "default locale has no prefix" branch.
 
 import { getActiveLocales, getDefaultLocale } from '@/config';
-import { db } from '@/lib/db';
 import { ROUTE_PAGES } from '@/lib/route-pages';
 import { getBaseUrl } from '@/lib/url';
 
 const LOCALES = getActiveLocales();
 const DEFAULT_LOCALE = getDefaultLocale();
-const STORE_SLUG = process.env.STORE_SLUG ?? 'electromarket';
 
 function xmlEscape(v: string): string {
   return v
@@ -58,46 +56,18 @@ export async function GET(): Promise<Response> {
   const lastmod = new Date().toISOString();
   const entries: Entry[] = [];
 
-  // 1. Static pages (ported from sitemap.ts)
-  for (const path of ['', '/catalog', '/cart', '/favorites', '/compare']) {
+  // Static pages
+  for (const path of ['', '/testimonials']) {
     entries.push({
       path,
-      changefreq: path === '' ? 'daily' : 'weekly',
-      priority: path === '' ? 1.0 : 0.7,
+      changefreq: path === '' ? 'weekly' : 'monthly',
+      priority: path === '' ? 1.0 : 0.6,
     });
   }
 
-  // 2. Transfer route landing pages
+  // Programmatic route landing pages
   for (const r of ROUTE_PAGES) {
     entries.push({ path: `/transfer/${r.slug}`, changefreq: 'monthly', priority: 0.9 });
-  }
-
-  // 3. Products, categories, brands (requires DB)
-  const store = await db.store.findUnique({ where: { slug: STORE_SLUG } });
-  if (store) {
-    const [products, categories, brands] = await Promise.all([
-      db.product.findMany({
-        where: { storeId: store.id, inStock: true },
-        select: { slug: true },
-      }),
-      db.category.findMany({ where: { storeId: store.id }, select: { slug: true } }),
-      db.product.findMany({
-        where: { storeId: store.id, brand: { not: null } },
-        select: { brand: true },
-        distinct: ['brand'],
-      }),
-    ]);
-
-    for (const p of products) {
-      entries.push({ path: `/product/${p.slug}`, changefreq: 'weekly', priority: 0.8 });
-    }
-    for (const cat of categories) {
-      entries.push({ path: `/category/${cat.slug}`, changefreq: 'weekly', priority: 0.6 });
-    }
-    for (const b of brands) {
-      if (!b.brand) continue;
-      entries.push({ path: `/brand/${b.brand.toLowerCase()}`, changefreq: 'weekly', priority: 0.5 });
-    }
   }
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
