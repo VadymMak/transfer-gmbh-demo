@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
+import { getActiveLocales, getDefaultLocale } from '@/config';
 import { db } from '@/lib/db';
 import { getStoreConfig } from '@/lib/store-config';
 import { getBaseUrl } from '@/lib/url';
@@ -60,9 +61,9 @@ export async function generateMetadata({
   const description = s.intro({ dest, dist: def.distanceKm, dur: formatDuration(def.durationMin, s), price });
 
   const languages: Record<string, string> = Object.fromEntries(
-    routing.locales.map((l) => [l, `${baseUrl}/${l}/transfer/${slug}`]),
+    getActiveLocales().map((l) => [l, `${baseUrl}/${l}/transfer/${slug}`]),
   );
-  languages['x-default'] = `${baseUrl}/de/transfer/${slug}`;
+  languages['x-default'] = `${baseUrl}/${getDefaultLocale()}/transfer/${slug}`;
 
   return {
     title,
@@ -101,6 +102,8 @@ export default async function RoutePage({
   const others = ROUTE_PAGES.filter((r) => r.slug !== slug);
   const faqItems = s.faq({ dest, dur, dist: def.distanceKm, price });
 
+  const serviceUrl = `${baseUrl}/${locale}/transfer/${slug}`;
+
   const areaServed: Record<string, unknown>[] = [{ '@type': 'City', name: def.destCity }];
   if (def.airportIata) areaServed.push({ '@type': 'Airport', name: def.airportName, iataCode: def.airportIata });
   areaServed.push({ '@type': 'Country', name: def.country });
@@ -111,7 +114,7 @@ export default async function RoutePage({
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: s.home, item: `${baseUrl}/${locale}` },
-        { '@type': 'ListItem', position: 2, name, item: `${baseUrl}/${locale}/transfer/${slug}` },
+        { '@type': 'ListItem', position: 2, name, item: serviceUrl },
       ],
     },
     {
@@ -120,14 +123,25 @@ export default async function RoutePage({
       serviceType: 'Airport transfer',
       name,
       description: s.subtitle(dest),
+      url: serviceUrl,
       areaServed,
       provider: {
         '@type': config.vertical.schemaType,
         name: config.name,
         telephone: config.presence.phone,
         url: baseUrl,
+        address: { '@type': 'PostalAddress', addressLocality: 'Trenčín', addressCountry: 'SK' },
       },
-      offers: [{ '@type': 'Offer', name: `${s.vehicle} (${s.upTo8})`, price, priceCurrency: 'EUR' }],
+      offers: [
+        {
+          '@type': 'Offer',
+          name: `${s.vehicle} (${s.upTo8})`,
+          price: String(price),
+          priceCurrency: 'EUR',
+          availability: 'https://schema.org/InStock',
+          url: serviceUrl,
+        },
+      ],
     },
     {
       '@context': 'https://schema.org',
@@ -140,9 +154,22 @@ export default async function RoutePage({
     },
   ];
 
+  const airportJsonLd = def.airportIata
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Airport',
+        name: def.airportName,
+        iataCode: def.airportIata,
+        address: { '@type': 'PostalAddress', addressCountry: def.country },
+      }
+    : null;
+
   return (
     <div className={styles.wrap}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {airportJsonLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(airportJsonLd) }} />
+      )}
 
       <nav className={styles.crumbs} aria-label="Breadcrumb">
         <Link href={`/${locale}`}>{s.home}</Link>
