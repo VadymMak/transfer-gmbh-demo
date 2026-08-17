@@ -15,6 +15,7 @@ html, body {
   --color-bg-card:        #0E2040;
   --color-gold:           #C9A347;
   --color-gold-dark:      #A8893E;
+  --color-primary-dark:   var(--color-gold-dark);
   --color-gold-light:     #E0B85A;
   --color-text-primary:   #FFFFFF;
   --color-text-secondary: #B8C4D4;
