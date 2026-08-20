@@ -162,6 +162,15 @@ export default async function Footer({ config, locale }: FooterProps) {
 
       </div>
 
+      {/* Legal identity — § 3a Obchodného zákonníka / Zoznam.sk */}
+      <div className="footer__legal">
+        <strong>Bieliaiev Mykola</strong>
+        {' · '}Východná 2336/13, 911 08 Trenčín
+        {' · '}IČO: 53647190
+        {' · '}Živnostenský register Okresného úradu Trenčín, č. 350-45888
+        {' · '}Neplatca DPH
+      </div>
+
       {/* Bottom bar */}
       <div className="footer__bottom">
         <p>{tFooter('allRightsReserved', { year: currentYear, name })}</p>

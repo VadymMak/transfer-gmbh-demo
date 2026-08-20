@@ -149,6 +149,7 @@ export default async function LocaleLayout({
     '@type': config.vertical.schemaType,
     '@id': `${baseUrl}/#business`,
     name: config.name,
+    legalName: 'Bieliaiev Mykola',
     description: seoDescription,
     url: `${baseUrl}/${locale}`,
     image: ogImage,
