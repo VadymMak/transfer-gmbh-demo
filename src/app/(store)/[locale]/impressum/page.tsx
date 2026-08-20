@@ -138,7 +138,7 @@ export default async function ImpressumPage({
 
         <section className={styles.legal__section}>
           <h2>{c.operator}</h2>
-          <p>Mykola Bieliaiev<br />
+          <p>Bieliaiev Mykola<br />
           Východná 2336/13<br />
           911 08 Trenčín, Slovensko</p>
         </section>
